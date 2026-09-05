@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'HarmonyOS Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, 'Cascadia Code', monospace;
+
+  /* 品牌主色阶谱：以启动器设计系统主色 #5B6FF5 为核心 */
+  --color-green-50: #EEF1FD;
+  --color-green-100: #E0E5FC;
+  --color-green-200: #C5CDF9;
+  --color-green-300: #9DAAF5;
+  --color-green-400: #7A88F2;
+  --color-green-500: #5B6FF5;
+  --color-green-600: #4A58E0;
+  --color-green-700: #3C48BC;
+  --color-green-800: #333D99;
+  --color-green-900: #2D357A;
+  --color-green-950: #181C44;
+}
