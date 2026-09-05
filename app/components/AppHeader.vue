@@ -14,6 +14,11 @@ const isActive = (to: string) =>
   to === '/'
     ? route.path === '/'
     : route.path.startsWith(to)
+
+const mobileOpen = ref(false)
+watch(() => route.fullPath, () => {
+  mobileOpen.value = false
+})
 </script>
 
 <template>
@@ -35,17 +40,19 @@ const isActive = (to: string) =>
             <span class="truncate text-[15px] font-semibold tracking-tight">{{ BRAND.name }}</span>
           </NuxtLink>
 
-          <nav class="hidden items-center gap-1 md:flex">
+          <!-- 桌面端导航 -->
+          <nav class="hidden items-center gap-1.5 md:flex">
             <UButton
               v-for="link in links"
               :key="link.to"
               :to="link.to"
               :label="link.label"
-              :active="isActive(link.to)"
-              default-variant="ghost"
+              variant="ghost"
               color="neutral"
               size="sm"
-              :class="isActive(link.to) ? 'text-(--ui-primary) font-semibold' : ''"
+              :class="isActive(link.to)
+                ? 'bg-primary/10 text-(--ui-primary) font-semibold'
+                : 'text-muted'"
             />
           </nav>
         </div>
@@ -59,8 +66,41 @@ const isActive = (to: string) =>
             aria-label="GitHub"
             color="neutral"
             variant="ghost"
+            class="hidden sm:inline-flex"
+          />
+          <!-- 移动端菜单按钮 -->
+          <UButton
+            :icon="mobileOpen ? 'i-lucide-x' : 'i-lucide-menu'"
+            square
+            variant="ghost"
+            color="neutral"
+            aria-label="打开菜单"
+            class="md:hidden"
+            @click="mobileOpen = !mobileOpen"
           />
         </div>
+      </div>
+
+      <!-- 移动端下拉菜单 -->
+      <div
+        v-if="mobileOpen"
+        class="absolute inset-x-0 top-16 border-b border-white/15 bg-white/90 shadow-lg backdrop-blur-2xl dark:border-white/10 dark:bg-gray-950/90 md:hidden"
+      >
+        <nav class="flex flex-col gap-1 p-3">
+          <UButton
+            v-for="link in links"
+            :key="link.to"
+            :to="link.to"
+            :label="link.label"
+            variant="ghost"
+            color="neutral"
+            block
+            class="justify-start"
+            :class="isActive(link.to)
+              ? 'bg-primary/10 text-(--ui-primary) font-semibold'
+              : 'text-muted'"
+          />
+        </nav>
       </div>
     </div>
   </header>

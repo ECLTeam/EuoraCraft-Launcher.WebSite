@@ -15,7 +15,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
   <div>
     <!-- Hero -->
     <section class="relative flex min-h-[calc(100vh-4rem)] items-center">
-      <div class="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+      <div class="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div class="max-w-xl">
           <UBadge
             color="primary"
@@ -32,12 +32,14 @@ const overviewFeatures = computed(() => features.slice(0, 6))
             {{ BRAND.tagline }}
           </p>
 
-          <div class="mt-8 flex flex-wrap gap-3">
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <UButton
               to="/download"
               size="lg"
               icon="i-lucide-download"
               label="立即下载"
+              block
+              class="sm:w-auto"
             />
             <UButton
               to="/features"
@@ -46,6 +48,8 @@ const overviewFeatures = computed(() => features.slice(0, 6))
               variant="subtle"
               icon="i-lucide-sparkles"
               label="了解特性"
+              block
+              class="sm:w-auto"
             />
           </div>
 
