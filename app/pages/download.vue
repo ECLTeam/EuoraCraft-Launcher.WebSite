@@ -17,7 +17,10 @@ const platforms = [
     />
 
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-      <div class="flex flex-col items-start gap-4 rounded-2xl border border-(--ui-border) p-6 sm:flex-row sm:items-center sm:justify-between">
+      <div
+        v-reveal
+        class="card-lift flex flex-col items-start gap-4 rounded-2xl border border-(--ui-border) p-6 sm:flex-row sm:items-center sm:justify-between"
+      >
         <div>
           <h2 class="text-xl font-bold">
             最新版本
@@ -35,15 +38,20 @@ const platforms = [
         />
       </div>
 
-      <div class="mt-8">
+      <div
+        v-reveal
+        class="mt-8"
+      >
         <h3 class="font-semibold">
           支持平台
         </h3>
         <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div
-            v-for="platform in platforms"
+            v-for="(platform, i) in platforms"
             :key="platform.name"
-            class="rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-5 text-center backdrop-blur"
+            v-reveal
+            :delay="i * 80"
+            class="card-lift rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-5 text-center backdrop-blur"
           >
             <UIcon
               :name="platform.icon"
@@ -59,7 +67,10 @@ const platforms = [
         </div>
       </div>
 
-      <div class="mt-10 rounded-2xl border border-(--ui-border) p-6">
+      <div
+        v-reveal
+        class="card-lift mt-10 rounded-2xl border border-(--ui-border) p-6"
+      >
         <h3 class="font-semibold">
           更新方式
         </h3>
@@ -68,7 +79,10 @@ const platforms = [
         </p>
       </div>
 
-      <p class="mt-8 text-xs text-muted">
+      <p
+        v-reveal
+        class="mt-8 text-xs text-muted"
+      >
         {{ DISCLAIMER }}
       </p>
     </div>

@@ -50,6 +50,7 @@ watch(() => route.fullPath, () => {
               variant="ghost"
               color="neutral"
               size="sm"
+              class="transition-all duration-300 ease-standard hover:-translate-y-px"
               :class="isActive(link.to)
                 ? 'bg-primary/10 text-(--ui-primary) font-semibold'
                 : 'text-muted'"
@@ -75,33 +76,35 @@ watch(() => route.fullPath, () => {
             variant="ghost"
             color="neutral"
             aria-label="打开菜单"
-            class="md:hidden"
+            class="transition-transform duration-300 ease-emphasized md:hidden"
             @click="mobileOpen = !mobileOpen"
           />
         </div>
       </div>
 
       <!-- 移动端下拉菜单 -->
-      <div
-        v-if="mobileOpen"
-        class="absolute inset-x-0 top-16 border-b border-white/15 bg-white/90 shadow-lg backdrop-blur-2xl dark:border-white/10 dark:bg-gray-950/90 md:hidden"
-      >
-        <nav class="flex flex-col gap-1 p-3">
-          <UButton
-            v-for="link in links"
-            :key="link.to"
-            :to="link.to"
-            :label="link.label"
-            variant="ghost"
-            color="neutral"
-            block
-            class="justify-start"
-            :class="isActive(link.to)
-              ? 'bg-primary/10 text-(--ui-primary) font-semibold'
-              : 'text-muted'"
-          />
-        </nav>
-      </div>
+      <Transition name="menu">
+        <div
+          v-if="mobileOpen"
+          class="absolute inset-x-0 top-16 border-b border-white/15 bg-white/90 shadow-lg backdrop-blur-2xl dark:border-white/10 dark:bg-gray-950/90 md:hidden"
+        >
+          <nav class="flex flex-col gap-1 p-3">
+            <UButton
+              v-for="link in links"
+              :key="link.to"
+              :to="link.to"
+              :label="link.label"
+              variant="ghost"
+              color="neutral"
+              block
+              class="justify-start"
+              :class="isActive(link.to)
+                ? 'bg-primary/10 text-(--ui-primary) font-semibold'
+                : 'text-muted'"
+            />
+          </nav>
+        </div>
+      </Transition>
     </div>
   </header>
 </template>

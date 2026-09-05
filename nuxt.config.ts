@@ -13,6 +13,14 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-06-30',
 
+  // 全站页面切换统一使用强调缓动曲线（风格见 assets/css/main.css）
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    }
+  },
+
   eslint: {
     config: {
       stylistic: {

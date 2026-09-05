@@ -12,54 +12,65 @@ import { BRAND, DISCLAIMER, LICENSE, LINKS, TECH_STACK } from '~/constants'
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
       <div class="grid gap-10 lg:grid-cols-3">
         <div class="lg:col-span-2">
-          <h2 class="text-xl font-bold">
-            项目介绍
-          </h2>
-          <p class="mt-3 text-muted">
-            {{ BRAND.name }}（ECL）是一款现代化、可插拔的 Minecraft 第三方启动器，采用
-            Python + Tauri 构建。只需编写少量代码即可通过插件系统扩展启动器功能，满足个性化需求。
-          </p>
-          <p class="mt-3 text-muted">
-            它提供多账户登录、多版本实例管理、内置联机大厅与国际化的开箱即用体验，同时通过声明式权限模型保障插件运行的安全边界。
-          </p>
-
-          <h3 class="mt-8 text-lg font-semibold">
-            技术栈
-          </h3>
-          <div class="mt-3 flex flex-wrap gap-2">
-            <span
-              v-for="tech in TECH_STACK"
-              :key="tech"
-              class="rounded-full border border-(--ui-border) bg-(--ui-bg)/80 px-3 py-1 font-mono text-xs text-muted"
-            >
-              {{ tech }}
-            </span>
+          <div v-reveal>
+            <h2 class="text-xl font-bold">
+              项目介绍
+            </h2>
+            <p class="mt-3 text-muted">
+              {{ BRAND.name }}（ECL）是一款现代化、可插拔的 Minecraft 第三方启动器，采用
+              Python + Tauri 构建。只需编写少量代码即可通过插件系统扩展启动器功能，满足个性化需求。
+            </p>
+            <p class="mt-3 text-muted">
+              它提供多账户登录、多版本实例管理、内置联机大厅与国际化的开箱即用体验，同时通过声明式权限模型保障插件运行的安全边界。
+            </p>
           </div>
 
-          <h3 class="mt-8 text-lg font-semibold">
-            开源许可
-          </h3>
-          <p class="mt-3 text-muted">
-            项目源代码遵循 {{ LICENSE.code }}；Logo 与图片素材遵循 {{ LICENSE.images }}。
-            源码托管于
-            <a
-              :href="LINKS.repo"
-              target="_blank"
-              rel="noopener"
-              class="text-(--ui-primary)"
-            >GitHub</a>。
-          </p>
+          <div v-reveal>
+            <h3 class="mt-8 text-lg font-semibold">
+              技术栈
+            </h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span
+                v-for="tech in TECH_STACK"
+                :key="tech"
+                class="rounded-full border border-(--ui-border) bg-(--ui-bg)/80 px-3 py-1 font-mono text-xs text-muted"
+              >
+                {{ tech }}
+              </span>
+            </div>
+          </div>
 
-          <h3 class="mt-8 text-lg font-semibold">
-            免责声明
-          </h3>
-          <p class="mt-3 text-sm text-muted">
-            {{ DISCLAIMER }}
-          </p>
+          <div v-reveal>
+            <h3 class="mt-8 text-lg font-semibold">
+              开源许可
+            </h3>
+            <p class="mt-3 text-muted">
+              项目源代码遵循 {{ LICENSE.code }}；Logo 与图片素材遵循 {{ LICENSE.images }}。
+              源码托管于
+              <a
+                :href="LINKS.repo"
+                target="_blank"
+                rel="noopener"
+                class="text-(--ui-primary)"
+              >GitHub</a>。
+            </p>
+          </div>
+
+          <div v-reveal>
+            <h3 class="mt-8 text-lg font-semibold">
+              免责声明
+            </h3>
+            <p class="mt-3 text-sm text-muted">
+              {{ DISCLAIMER }}
+            </p>
+          </div>
         </div>
 
         <aside class="space-y-4">
-          <div class="rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur">
+          <div
+            v-reveal
+            class="card-lift rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur"
+          >
             <h3 class="font-semibold">
               组织
             </h3>

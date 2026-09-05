@@ -14,9 +14,12 @@ const overviewFeatures = computed(() => features.slice(0, 6))
 <template>
   <div>
     <!-- Hero -->
-    <section class="relative flex min-h-[calc(100vh-4rem)] items-center">
+    <section class="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden">
       <div class="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
-        <div class="max-w-xl">
+        <div
+          v-reveal
+          class="max-w-xl"
+        >
           <UBadge
             color="primary"
             variant="subtle"
@@ -32,7 +35,10 @@ const overviewFeatures = computed(() => features.slice(0, 6))
             {{ BRAND.tagline }}
           </p>
 
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div
+            v-reveal
+            class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
             <UButton
               to="/download"
               size="lg"
@@ -53,7 +59,10 @@ const overviewFeatures = computed(() => features.slice(0, 6))
             />
           </div>
 
-          <div class="mt-8 flex items-center gap-1 text-sm text-muted">
+          <div
+            v-reveal
+            class="mt-8 flex items-center gap-1 text-sm text-muted"
+          >
             <UIcon
               name="i-simple-icons-github"
               class="size-4"
@@ -69,7 +78,11 @@ const overviewFeatures = computed(() => features.slice(0, 6))
           </div>
         </div>
 
-        <div class="relative">
+        <div
+          v-reveal
+          :delay="120"
+          class="relative"
+        >
           <img
             :src="heroImg"
             alt="EuoraCraft Launcher 界面截图"
@@ -82,7 +95,10 @@ const overviewFeatures = computed(() => features.slice(0, 6))
     <!-- 特性概览 -->
     <section class="border-t border-(--ui-border)">
       <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div class="max-w-2xl">
+        <div
+          v-reveal
+          class="max-w-2xl"
+        >
           <h2 class="text-3xl font-bold tracking-tight">
             核心特性
           </h2>
@@ -93,9 +109,11 @@ const overviewFeatures = computed(() => features.slice(0, 6))
 
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div
-            v-for="feature in overviewFeatures"
+            v-for="(feature, i) in overviewFeatures"
             :key="feature.title"
-            class="rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur transition-shadow hover:shadow-lg"
+            v-reveal
+            :delay="i * 70"
+            class="card-lift rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur"
           >
             <UIcon
               :name="feature.icon"
@@ -110,7 +128,10 @@ const overviewFeatures = computed(() => features.slice(0, 6))
           </div>
         </div>
 
-        <div class="mt-10">
+        <div
+          v-reveal
+          class="mt-10"
+        >
           <UButton
             to="/features"
             color="neutral"
@@ -125,13 +146,19 @@ const overviewFeatures = computed(() => features.slice(0, 6))
     <!-- 技术栈 -->
     <section class="border-t border-(--ui-border)">
       <div class="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold tracking-tight">
-          技术栈
-        </h2>
-        <p class="mt-2 text-muted">
-          坚固的后端与现代化的前端共同驱动。
-        </p>
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <div v-reveal>
+          <h2 class="text-2xl font-bold tracking-tight">
+            技术栈
+          </h2>
+          <p class="mt-2 text-muted">
+            坚固的后端与现代化的前端共同驱动。
+          </p>
+        </div>
+        <div
+          v-reveal
+          :delay="100"
+          class="mt-6 flex flex-wrap items-center justify-center gap-3"
+        >
           <span
             v-for="tech in TECH_STACK"
             :key="tech"
@@ -146,14 +173,19 @@ const overviewFeatures = computed(() => features.slice(0, 6))
     <!-- 下载引导 -->
     <section class="border-t border-(--ui-border)">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div class="rounded-2xl border border-(--ui-border) p-8 text-center sm:p-12">
+        <div
+          v-reveal
+          class="card-lift rounded-2xl border border-(--ui-border) p-8 text-center sm:p-12"
+        >
           <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">
             准备好开始了吗？
           </h2>
           <p class="mx-auto mt-3 max-w-xl text-muted">
             从 GitHub Releases 下载最新版本，支持 Windows、Linux 与 macOS。
           </p>
-          <div class="mt-6">
+          <div
+            class="mt-6 flex justify-center transition-transform duration-300 ease-standard hover:-translate-y-px"
+          >
             <UButton
               to="/download"
               size="lg"
