@@ -1,0 +1,148 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "download": "Download",
+    "docs": "Docs",
+    "about": "About"
+  },
+  "brand": {
+    "tagline": "Modern Minecraft third-party launcher written in Python, with plugin extensibility.",
+    "badge": "Third-party Minecraft launcher"
+  },
+  "home": {
+    "hero": {
+      "download": "Download now",
+      "learn": "Explore features",
+      "repo": "Open source · GPL-3.0",
+      "imgAlt": "EuoraCraft Launcher interface screenshot"
+    },
+    "features": {
+      "title": "Core features",
+      "desc": "From plugin system to multiplayer lobby, built for your personal needs.",
+      "viewAll": "View all features"
+    },
+    "stack": {
+      "title": "Tech stack",
+      "desc": "A solid backend and a modern frontend working together."
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "desc": "Download the latest release from GitHub Releases, supporting Windows, Linux and macOS.",
+      "button": "Go to download"
+    }
+  },
+  "featuresPage": {
+    "title": "Features",
+    "desc": "The core capabilities of EuoraCraft Launcher, covering plugins, accounts, instances, multiplayer and more."
+  },
+  "download": {
+    "title": "Download",
+    "desc": "Get the latest version from GitHub Releases. Please read the docs and tutorials before your first use.",
+    "latest": {
+      "title": "Latest version",
+      "desc": "Visit the GitHub Releases page to download the installer for your platform.",
+      "button": "Go to Releases"
+    },
+    "platforms": "Supported platforms",
+    "update": {
+      "title": "Update method",
+      "desc": "This project provides no automatic updates. Installers are published via GitHub Releases, and users update manually from the Release page. Please watch the Releases page for the latest version."
+    }
+  },
+  "docs": {
+    "view": "View",
+    "desc": "Tutorials, theme design and plugin extension documentation entries. More content is available in the project Wiki."
+  },
+  "about": {
+    "intro": {
+      "title": "About the project",
+      "p1": "EuoraCraft Launcher (ECL) is a modern, pluggable third-party Minecraft launcher built with Python + Tauri. With just a little code you can extend the launcher through its plugin system to meet your personal needs.",
+      "p2": "It offers an out-of-the-box experience with multi-account login, multi-version instance management, a built-in multiplayer lobby and i18n, while a declarative permission model keeps the security boundary of plugin execution intact."
+    },
+    "stack": "Tech stack",
+    "license": {
+      "title": "Open source license",
+      "text": "The source code is licensed under {code}; the logo and image assets follow {images}. The source is hosted on GitHub."
+    },
+    "disclaimer": "Disclaimer",
+    "sidebar": {
+      "org": "Organization",
+      "contact": "Contact",
+      "links": "Links",
+      "repo": "GitHub repository",
+      "releases": "Releases",
+      "wiki": "Project wiki"
+    }
+  },
+  "footer": {
+    "nav": "Navigation",
+    "project": "Project",
+    "repo": "GitHub repository",
+    "releases": "Releases",
+    "wiki": "Project wiki",
+    "issues": "Open an issue",
+    "copyright": "Code is under {license}; the logo and images follow {images}."
+  },
+  "disclaimer": "EuoraCraft Launcher is an independent third-party community tool, not affiliated with, endorsed by, or officially connected to Mojang Studios, Microsoft, or any of their subsidiaries.",
+  "docsItems": {
+    "wiki": {
+      "title": "Project Wiki",
+      "desc": "Tutorials, frequently asked questions and advanced guides, recommended before your first use."
+    },
+    "themeDesigner": {
+      "title": "Theme design guide",
+      "desc": "Visually edit themes in a dedicated window and export .ecltheme theme bundles."
+    },
+    "pluginConnector": {
+      "title": "Multiplayer connector protocol",
+      "desc": "Extend the multiplayer lobby with custom protocols via plugins."
+    },
+    "instanceCompat": {
+      "title": "Instance compatibility",
+      "desc": "Read read-only instance metadata from other launchers for instance compatibility."
+    }
+  },
+  "featureItems": {
+    "plugin": {
+      "icon": "i-lucide-puzzle",
+      "title": "Plugin system",
+      "desc": "Extension points for backend plugins, themes, multiplayer connectors, auth, crash analysis and more, controlled by a declarative permission model."
+    },
+    "palette": {
+      "icon": "i-lucide-palette",
+      "title": "Modern UI",
+      "desc": "Vue 3 + Naive UI + Tailwind CSS with light/dark themes, custom appearance and a visual theme designer."
+    },
+    "users": {
+      "icon": "i-lucide-users",
+      "title": "Multi-account support",
+      "desc": "Microsoft account login + Yggdrasil authentication, plus offline mode and a skin wardrobe."
+    },
+    "instances": {
+      "icon": "i-lucide-boxes",
+      "title": "Instance management",
+      "desc": "Isolated multi-version instances with independent config, managing mods, resource packs, worlds, servers and screenshots together."
+    },
+    "lobby": {
+      "icon": "i-lucide-wifi",
+      "title": "Multiplayer lobby",
+      "desc": "Built-in EasyTier virtual network and room management, with plugin-based connector protocol extensions."
+    },
+    "i18n": {
+      "icon": "i-lucide-languages",
+      "title": "Internationalization",
+      "desc": "Built-in vue-i18n with support for multiple languages, for users worldwide."
+    },
+    "release": {
+      "icon": "i-lucide-rocket",
+      "title": "Version release",
+      "desc": "Installers published via GitHub Releases; users update manually from the Release page."
+    },
+    "security": {
+      "icon": "i-lucide-shield-check",
+      "title": "Secure & reliable",
+      "desc": "Plugins run inside the host process, restricted by a declarative permission model; GPL-3.0 open source."
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "nav": {
+    "home": "首页",
+    "features": "特性",
+    "download": "下载",
+    "docs": "文档",
+    "about": "关于"
+  },
+  "brand": {
+    "tagline": "使用 Python 编写的现代化 Minecraft 第三方启动器，支持插件拓展功能",
+    "badge": "Minecraft 第三方启动器"
+  },
+  "home": {
+    "hero": {
+      "download": "立即下载",
+      "learn": "了解特性",
+      "repo": "开源仓库 · GPL-3.0",
+      "imgAlt": "EuoraCraft Launcher 界面截图"
+    },
+    "features": {
+      "title": "核心特性",
+      "desc": "从插件系统到联机大厅，为你的个性化需求而生。",
+      "viewAll": "查看全部特性"
+    },
+    "stack": {
+      "title": "技术栈",
+      "desc": "坚固的后端与现代化的前端共同驱动。"
+    },
+    "cta": {
+      "title": "准备好开始了吗？",
+      "desc": "从 GitHub Releases 下载最新版本，支持 Windows、Linux 与 macOS。",
+      "button": "前往下载"
+    }
+  },
+  "featuresPage": {
+    "title": "特性",
+    "desc": "EuoraCraft Launcher 的核心能力，覆盖插件拓展、账户、实例与联机等方方面面。"
+  },
+  "download": {
+    "title": "下载",
+    "desc": "从 GitHub Releases 获取最新版本。首次使用请先查阅文档与使用教程。",
+    "latest": {
+      "title": "最新版本",
+      "desc": "访问 GitHub Releases 页面下载对应平台的安装包。",
+      "button": "前往 Releases 下载"
+    },
+    "platforms": "支持平台",
+    "update": {
+      "title": "更新方式",
+      "desc": "本项目不提供自动更新，基于 GitHub Releases 发布安装包，由用户从 Release 页面手动下载更新。请留意 Release 页面获取最新版本。"
+    }
+  },
+  "docs": {
+    "view": "查看",
+    "desc": "使用教程、主题设计与插件扩展相关文档入口。更多内容请前往项目 Wiki。"
+  },
+  "about": {
+    "intro": {
+      "title": "项目介绍",
+      "p1": "EuoraCraft Launcher（ECL）是一款现代化、可插拔的 Minecraft 第三方启动器，采用 Python + Tauri 构建。只需编写少量代码即可通过插件系统扩展启动器功能，满足个性化需求。",
+      "p2": "它提供多账户登录、多版本实例管理、内置联机大厅与国际化的开箱即用体验，同时通过声明式权限模型保障插件运行的安全边界。"
+    },
+    "stack": "技术栈",
+    "license": {
+      "title": "开源许可",
+      "text": "项目源代码遵循 {code}；Logo 与图片素材遵循 {images}。源码托管于 GitHub。"
+    },
+    "disclaimer": "免责声明",
+    "sidebar": {
+      "org": "组织",
+      "contact": "联系",
+      "links": "链接",
+      "repo": "GitHub 仓库",
+      "releases": "版本发布",
+      "wiki": "项目文档"
+    }
+  },
+  "footer": {
+    "nav": "导航",
+    "project": "项目",
+    "repo": "GitHub 仓库",
+    "releases": "版本发布",
+    "wiki": "项目文档",
+    "issues": "提交 Issue",
+    "copyright": "代码遵循 {license}，Logo 与图片遵循 {images}。"
+  },
+  "disclaimer": "EuoraCraft Launcher 是独立的第三方社区工具，与 Mojang Studios、Microsoft 或任何其子公司没有任何附属关系、背书关系或官方关联。",
+  "docsItems": {
+    "wiki": {
+      "title": "项目文档（Wiki）",
+      "desc": "使用教程、常见问题与进阶指南，适合首次使用前阅读。"
+    },
+    "themeDesigner": {
+      "title": "主题设计指南",
+      "desc": "在独立窗口中可视化编辑主题，并导出 .ecltheme 主题包。"
+    },
+    "pluginConnector": {
+      "title": "联机扩展协议",
+      "desc": "通过插件为联机大厅扩展自定义协议。"
+    },
+    "instanceCompat": {
+      "title": "实例兼容扩展",
+      "desc": "读取其他启动器的只读实例元数据，实现实例兼容。"
+    }
+  },
+  "featureItems": {
+    "plugin": {
+      "icon": "i-lucide-puzzle",
+      "title": "插件系统",
+      "desc": "后端插件、主题、联机扩展、认证、崩溃分析等扩展点，使用声明式权限模型控制插件能力。"
+    },
+    "palette": {
+      "icon": "i-lucide-palette",
+      "title": "现代化 UI",
+      "desc": "Vue 3 + Naive UI + Tailwind CSS，支持亮暗主题、自定义外观与可视化主题设计器。"
+    },
+    "users": {
+      "icon": "i-lucide-users",
+      "title": "多账户支持",
+      "desc": "微软账户登录 + Yggdrasil 认证，并支持离线模式与皮肤衣柜。"
+    },
+    "instances": {
+      "icon": "i-lucide-boxes",
+      "title": "实例管理",
+      "desc": "多版本实例隔离，独立配置，统一管理模组、资源包、世界、服务器与截图。"
+    },
+    "lobby": {
+      "icon": "i-lucide-wifi",
+      "title": "联机大厅",
+      "desc": "内置 EasyTier 虚拟网络与联机房间管理，支持插件扩展联机协议。"
+    },
+    "i18n": {
+      "icon": "i-lucide-languages",
+      "title": "国际化",
+      "desc": "内置 vue-i18n，支持多种语言，面向全球用户。"
+    },
+    "release": {
+      "icon": "i-lucide-rocket",
+      "title": "版本发布",
+      "desc": "基于 GitHub Releases 发布安装包，由用户从 Release 页面手动下载更新。"
+    },
+    "security": {
+      "icon": "i-lucide-shield-check",
+      "title": "安全可靠",
+      "desc": "插件在宿主进程内执行，通过声明式权限限制访问范围；GPL-3.0 开源协议。"
+    }
+  }
+}

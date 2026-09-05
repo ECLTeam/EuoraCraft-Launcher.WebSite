@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { BRAND, LINKS } from '~/constants'
 
-const links = [
-  { label: '首页', to: '/' },
-  { label: '特性', to: '/features' },
-  { label: '下载', to: '/download' },
-  { label: '文档', to: '/docs' },
-  { label: '关于', to: '/about' }
+const { t, locale } = useI18n()
+
+const links = computed(() => [
+  { label: t('nav.home'), to: '/' },
+  { label: t('nav.features'), to: '/features' },
+  { label: t('nav.download'), to: '/download' },
+  { label: t('nav.docs'), to: '/docs' },
+  { label: t('nav.about'), to: '/about' }
+])
+
+const langItems = [
+  { label: '中文', value: 'zh-CN' },
+  { label: 'English', value: 'en-US' }
 ]
 
 const route = useRoute()
@@ -59,7 +66,16 @@ watch(() => route.fullPath, () => {
         </div>
 
         <div class="flex items-center gap-1">
-          <UColorModeButton />
+          <ColorModeToggle />
+          <USelect
+            v-model="locale"
+            :items="langItems"
+            variant="ghost"
+            color="neutral"
+            size="sm"
+            aria-label="切换语言"
+            class="w-24"
+          />
           <UButton
             :to="LINKS.repo"
             target="_blank"

@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { BRAND, LINKS, TECH_STACK } from '~/constants'
-import { features } from '~/data/features'
+import { featureKeys } from '~/data/features'
 
 import show1 from '~/img/show-1.png'
 import show1Black from '~/img/show-1-black.png'
 
+const { t } = useI18n()
 const colorMode = useColorMode()
-const heroImg = computed(() => (colorMode.value === 'dark' ? show1Black : show1))
 
-const overviewFeatures = computed(() => features.slice(0, 6))
+const heroImg = computed(() => (colorMode.value === 'dark' ? show1Black : show1))
+const overviewKeys = computed(() => featureKeys.slice(0, 6))
 </script>
 
 <template>
@@ -24,7 +25,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
             color="primary"
             variant="subtle"
           >
-            Minecraft 第三方启动器
+            {{ t('brand.badge') }}
           </UBadge>
 
           <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
@@ -32,7 +33,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
           </h1>
 
           <p class="mt-4 text-lg text-muted">
-            {{ BRAND.tagline }}
+            {{ t('brand.tagline') }}
           </p>
 
           <div
@@ -43,7 +44,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
               to="/download"
               size="lg"
               icon="i-lucide-download"
-              label="立即下载"
+              :label="t('home.hero.download')"
               block
               class="sm:w-auto"
             />
@@ -53,7 +54,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
               color="neutral"
               variant="subtle"
               icon="i-lucide-sparkles"
-              label="了解特性"
+              :label="t('home.hero.learn')"
               block
               class="sm:w-auto"
             />
@@ -73,7 +74,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
               rel="noopener"
               class="hover:text-(--ui-primary)"
             >
-              开源仓库 · GPL-3.0
+              {{ t('home.hero.repo') }}
             </a>
           </div>
         </div>
@@ -85,7 +86,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
         >
           <img
             :src="heroImg"
-            alt="EuoraCraft Launcher 界面截图"
+            :alt="t('home.hero.imgAlt')"
             class="w-full rounded-2xl border border-(--ui-border) shadow-2xl"
           >
         </div>
@@ -100,30 +101,30 @@ const overviewFeatures = computed(() => features.slice(0, 6))
           class="max-w-2xl"
         >
           <h2 class="text-3xl font-bold tracking-tight">
-            核心特性
+            {{ t('home.features.title') }}
           </h2>
           <p class="mt-3 text-muted">
-            从插件系统到联机大厅，为你的个性化需求而生。
+            {{ t('home.features.desc') }}
           </p>
         </div>
 
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div
-            v-for="(feature, i) in overviewFeatures"
-            :key="feature.title"
+            v-for="(key, i) in overviewKeys"
+            :key="key"
             v-reveal
             :delay="i * 70"
-            class="card-lift rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur"
+            class="card-outline rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur"
           >
             <UIcon
-              :name="feature.icon"
+              :name="t(`featureItems.${key}.icon`)"
               class="size-7 text-(--ui-primary)"
             />
             <h3 class="mt-4 font-semibold">
-              {{ feature.title }}
+              {{ t(`featureItems.${key}.title`) }}
             </h3>
             <p class="mt-2 text-sm text-muted">
-              {{ feature.description }}
+              {{ t(`featureItems.${key}.desc`) }}
             </p>
           </div>
         </div>
@@ -137,7 +138,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
             color="neutral"
             variant="ghost"
             trailing-icon="i-lucide-arrow-right"
-            label="查看全部特性"
+            :label="t('home.features.viewAll')"
           />
         </div>
       </div>
@@ -148,10 +149,10 @@ const overviewFeatures = computed(() => features.slice(0, 6))
       <div class="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
         <div v-reveal>
           <h2 class="text-2xl font-bold tracking-tight">
-            技术栈
+            {{ t('home.stack.title') }}
           </h2>
           <p class="mt-2 text-muted">
-            坚固的后端与现代化的前端共同驱动。
+            {{ t('home.stack.desc') }}
           </p>
         </div>
         <div
@@ -178,10 +179,10 @@ const overviewFeatures = computed(() => features.slice(0, 6))
           class="card-lift rounded-2xl border border-(--ui-border) p-8 text-center sm:p-12"
         >
           <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">
-            准备好开始了吗？
+            {{ t('home.cta.title') }}
           </h2>
           <p class="mx-auto mt-3 max-w-xl text-muted">
-            从 GitHub Releases 下载最新版本，支持 Windows、Linux 与 macOS。
+            {{ t('home.cta.desc') }}
           </p>
           <div
             class="mt-6 flex justify-center transition-transform duration-300 ease-standard hover:-translate-y-px"
@@ -190,7 +191,7 @@ const overviewFeatures = computed(() => features.slice(0, 6))
               to="/download"
               size="lg"
               icon="i-lucide-download"
-              label="前往下载"
+              :label="t('home.cta.button')"
             />
           </div>
         </div>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { DISCLAIMER, LINKS } from '~/constants'
+import { LINKS } from '~/constants'
+
+const { t } = useI18n()
 
 const platforms = [
   { icon: 'i-simple-icons-windows', name: 'Windows', arch: 'x64' },
@@ -12,8 +14,8 @@ const platforms = [
 <template>
   <div>
     <PageHeader
-      title="下载"
-      description="从 GitHub Releases 获取最新版本。首次使用请先查阅文档与使用教程。"
+      :title="t('download.title')"
+      :description="t('download.desc')"
     />
 
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
@@ -23,10 +25,10 @@ const platforms = [
       >
         <div>
           <h2 class="text-xl font-bold">
-            最新版本
+            {{ t('download.latest.title') }}
           </h2>
           <p class="mt-1 text-sm text-muted">
-            访问 GitHub Releases 页面下载对应平台的安装包。
+            {{ t('download.latest.desc') }}
           </p>
         </div>
         <UButton
@@ -34,7 +36,7 @@ const platforms = [
           target="_blank"
           size="lg"
           icon="i-simple-icons-github"
-          label="前往 Releases 下载"
+          :label="t('download.latest.button')"
         />
       </div>
 
@@ -43,7 +45,7 @@ const platforms = [
         class="mt-8"
       >
         <h3 class="font-semibold">
-          支持平台
+          {{ t('download.platforms') }}
         </h3>
         <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div
@@ -51,7 +53,7 @@ const platforms = [
             :key="platform.name"
             v-reveal
             :delay="i * 80"
-            class="card-lift rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-5 text-center backdrop-blur"
+            class="card-outline rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-5 text-center backdrop-blur"
           >
             <UIcon
               :name="platform.icon"
@@ -69,13 +71,13 @@ const platforms = [
 
       <div
         v-reveal
-        class="card-lift mt-10 rounded-2xl border border-(--ui-border) p-6"
+        class="mt-10 rounded-2xl border border-(--ui-border) p-6"
       >
         <h3 class="font-semibold">
-          更新方式
+          {{ t('download.update.title') }}
         </h3>
         <p class="mt-2 text-sm text-muted">
-          本项目不提供自动更新，基于 GitHub Releases 发布安装包，由用户从 Release 页面手动下载更新。请留意 Release 页面获取最新版本。
+          {{ t('download.update.desc') }}
         </p>
       </div>
 
@@ -83,7 +85,7 @@ const platforms = [
         v-reveal
         class="mt-8 text-xs text-muted"
       >
-        {{ DISCLAIMER }}
+        {{ t('disclaimer') }}
       </p>
     </div>
   </div>
