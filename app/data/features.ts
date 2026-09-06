@@ -5,7 +5,5 @@ export const featureKeys = [
   'users',
   'instances',
   'lobby',
-  'i18n',
-  'release',
-  'security'
+  'i18n'
 ]

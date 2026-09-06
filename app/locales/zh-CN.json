@@ -142,16 +142,6 @@
       "icon": "i-lucide-languages",
       "title": "国际化",
       "desc": "内置 vue-i18n，支持多种语言，面向全球用户。"
-    },
-    "release": {
-      "icon": "i-lucide-rocket",
-      "title": "版本发布",
-      "desc": "基于 GitHub Releases 发布安装包，由用户从 Release 页面手动下载更新。"
-    },
-    "security": {
-      "icon": "i-lucide-shield-check",
-      "title": "安全可靠",
-      "desc": "插件在宿主进程内执行，通过声明式权限限制访问范围；GPL-3.0 开源协议。"
     }
   }
 }

@@ -142,16 +142,6 @@
       "icon": "i-lucide-languages",
       "title": "Internationalization",
       "desc": "Built-in vue-i18n with support for multiple languages, for users worldwide."
-    },
-    "release": {
-      "icon": "i-lucide-rocket",
-      "title": "Version release",
-      "desc": "Installers published via GitHub Releases; users update manually from the Release page."
-    },
-    "security": {
-      "icon": "i-lucide-shield-check",
-      "title": "Secure & reliable",
-      "desc": "Plugins run inside the host process, restricted by a declarative permission model; GPL-3.0 open source."
     }
   }
 }
