@@ -24,7 +24,10 @@ export default defineNuxtConfig({
   // 构建时可用 NUXT_PUBLIC_SHOWCASE_URL 覆盖
   runtimeConfig: {
     public: {
-      showcaseUrl: process.env.NUXT_PUBLIC_SHOWCASE_URL || 'https://frontend.eclteam.top/'
+      // 构建时可用 NUXT_PUBLIC_SHOWCASE_URL 覆盖；globalThis 读取以规避配置文件的 node 类型依赖
+      showcaseUrl:
+        (globalThis as { process?: { env?: Record<string, string> } }).process?.env
+          ?.NUXT_PUBLIC_SHOWCASE_URL || 'https://frontend.eclteam.top/'
     }
   },
 
