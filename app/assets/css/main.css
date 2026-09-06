@@ -117,6 +117,38 @@
   }
 }
 
+/* ── Markdown 渲染正文（MdContent）──
+   轻量排版：行距、列表、链接、加粗与引言，随明暗主题自适应 */
+.md-body {
+  line-height: 1.75;
+  font-size: 0.95rem;
+  color: var(--ui-text-muted);
+}
+.md-body > :first-child {
+  margin-top: 0;
+}
+.md-body > :last-child {
+  margin-bottom: 0;
+}
+.md-body p {
+  margin: 0.75rem 0;
+}
+.md-body ul {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.md-body li {
+  margin: 0.3rem 0;
+}
+.md-body a {
+  color: var(--ui-primary);
+}
+.md-body strong {
+  color: var(--ui-text);
+  font-weight: 600;
+}
+
 /* 尊重系统减弱动效设置 */
 @media (prefers-reduced-motion: reduce) {
   .reveal,

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { BRAND, LICENSE, LINKS, TECH_STACK } from '~/constants'
+import aboutZh from '~/content/about.zh-CN.md?raw'
+import aboutEn from '~/content/about.en-US.md?raw'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+// 介绍正文为 markdown 源文本，按当前语言加载渲染；缺省回退中文
+const introMd = computed(() => (locale.value === 'en-US' ? aboutEn : aboutZh))
 </script>
 
 <template>
@@ -18,12 +22,10 @@ const { t } = useI18n()
             <h2 class="text-xl font-bold">
               {{ t('about.intro.title') }}
             </h2>
-            <p class="mt-3 text-muted">
-              {{ t('about.intro.p1') }}
-            </p>
-            <p class="mt-3 text-muted">
-              {{ t('about.intro.p2') }}
-            </p>
+            <MdContent
+              :source="introMd"
+              class="mt-3"
+            />
           </div>
 
           <div v-reveal>

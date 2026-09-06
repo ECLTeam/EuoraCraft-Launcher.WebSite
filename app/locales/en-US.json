@@ -57,9 +57,7 @@
   },
   "about": {
     "intro": {
-      "title": "About the project",
-      "p1": "EuoraCraft Launcher (ECL) is a modern, pluggable third-party Minecraft launcher built with Python + Tauri. With just a little code you can extend the launcher through its plugin system to meet your personal needs.",
-      "p2": "It offers an out-of-the-box experience with multi-account login, multi-version instance management, a built-in multiplayer lobby and i18n, while a declarative permission model keeps the security boundary of plugin execution intact."
+      "title": "About the project"
     },
     "stack": "Tech stack",
     "license": {
