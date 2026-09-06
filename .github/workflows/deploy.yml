@@ -1,0 +1,63 @@
+﻿name: Deploy Website to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# GITHUB_TOKEN 仅用于部署 GitHub Pages，不授予仓库内容写权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build website
+        env:
+          # 「页面浏览」展示地址：从仓库变量注入，未配置时页面显示占位
+          NUXT_PUBLIC_SHOWCASE_URL: '${{ vars.SHOWCASE_URL }}'
+        run: pnpm run build
+
+      # 写入自定义域名 CNAME，使 GitHub Pages 映射到本站。
+      # 未配置仓库变量 CUSTOM_DOMAIN 时沿用默认域 eclteam.top
+      - name: Write custom domain (CNAME)
+        shell: bash
+        run: |
+          DOMAIN="${{ vars.CUSTOM_DOMAIN }}"
+          if [ -z "$DOMAIN" ]; then DOMAIN="eclteam.top"; fi
+          printf '%s\n' "$DOMAIN" > dist/CNAME
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
