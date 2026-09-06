@@ -19,10 +19,13 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  // 「页面浏览」展示地址：由构建时的 NUXT_PUBLIC_SHOWCASE_URL 注入到
-  // useRuntimeConfig().public.showcaseUrl，未设置时 /showcase 显示占位
+  // 「页面浏览」展示地址：读入 useRuntimeConfig().public.showcaseUrl。
+  // 默认指向前端展示站，需被 iframe 嵌入的目标不得设置 X-Frame-Options/限制性 frame-ancestors；
+  // 构建时可用 NUXT_PUBLIC_SHOWCASE_URL 覆盖
   runtimeConfig: {
-    public: {}
+    public: {
+      showcaseUrl: process.env.NUXT_PUBLIC_SHOWCASE_URL || 'https://frontend.eclteam.top/'
+    }
   },
 
   compatibilityDate: '2026-06-30',
