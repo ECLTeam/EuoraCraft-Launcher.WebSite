@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { SHOWCASE_URL } from '~/constants'
-
 const { t } = useI18n()
+
+// 展示地址由运行时配置注入（构建时可被 SHOWCASE_URL 环境变量覆盖）
+const showcaseUrl = computed(
+  () => (useRuntimeConfig().public.showcaseUrl as string | undefined) ?? ''
+)
 
 // 启动器前端按桌面窗口尺寸设计，以固定设计宽高 + transform 缩放适配容器宽度
 const DESIGN_WIDTH = 1280
@@ -34,7 +37,7 @@ onMounted(() => {
     ref="frame"
     class="w-full"
   >
-    <template v-if="SHOWCASE_URL">
+    <template v-if="showcaseUrl">
       <div class="overflow-hidden rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 shadow-2xl backdrop-blur">
         <div class="flex items-center gap-3 border-b border-(--ui-border) px-4 py-2.5">
           <div class="flex gap-1.5">
@@ -47,10 +50,10 @@ onMounted(() => {
               name="i-lucide-lock"
               class="size-3.5 shrink-0 text-(--ui-primary)"
             />
-            <span class="truncate">{{ SHOWCASE_URL }}</span>
+            <span class="truncate">{{ showcaseUrl }}</span>
           </div>
           <UButton
-            :href="SHOWCASE_URL"
+            :href="showcaseUrl"
             target="_blank"
             size="xs"
             variant="ghost"
@@ -65,7 +68,7 @@ onMounted(() => {
           :style="{ height: `${frameHeight}px` }"
         >
           <iframe
-            :src="SHOWCASE_URL"
+            :src="showcaseUrl"
             title="EuoraCraft Launcher"
             :width="DESIGN_WIDTH"
             :height="DESIGN_HEIGHT"

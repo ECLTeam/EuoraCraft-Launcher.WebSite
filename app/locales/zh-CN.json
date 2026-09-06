@@ -83,7 +83,7 @@
     "note": "本界面为独立演示版本，操作仅用于展示，不会实际下载或启动 Minecraft。",
     "unconfigured": {
       "title": "展示站点尚未配置",
-      "desc": "这里将内嵌一个启动器前端演示窗口。请先将启动器前端的 build:showcase 构建产物部署到某个静态托管地址，再将该地址填入 constants.ts 的 SHOWCASE_URL。"
+      "desc": "这里将内嵌一个启动器前端演示窗口。请先将启动器前端的 build:showcase 构建产物部署到某个静态托管地址，再在 GitHub 仓库变量 SHOWCASE_URL 中配置该地址，构建时即会注入到这里。"
     }
   },
   "footer": {

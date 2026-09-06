@@ -1,15 +1,12 @@
 name: ci
 
-on: push
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [22]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -21,7 +18,7 @@ jobs:
       - name: Install node
         uses: actions/setup-node@v7
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 22
           cache: pnpm
 
       - name: Install dependencies
@@ -32,3 +29,9 @@ jobs:
 
       - name: Typecheck
         run: pnpm run typecheck
+
+      - name: Build
+        env:
+          # 「页面浏览」展示地址：从仓库变量注入，未配置时页面显示占位
+          NUXT_PUBLIC_SHOWCASE_URL: ${{ vars.SHOWCASE_URL }}
+        run: pnpm run build

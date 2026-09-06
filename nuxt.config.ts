@@ -19,6 +19,12 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // 「页面浏览」展示地址：由构建时的 NUXT_PUBLIC_SHOWCASE_URL 注入到
+  // useRuntimeConfig().public.showcaseUrl，未设置时 /showcase 显示占位
+  runtimeConfig: {
+    public: {}
+  },
+
   compatibilityDate: '2026-06-30',
 
   eslint: {
