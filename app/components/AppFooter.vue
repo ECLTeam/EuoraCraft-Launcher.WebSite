@@ -56,6 +56,10 @@ const now = new Date().getFullYear()
               class="hover:text-(--ui-primary)"
             >{{ t('nav.docs') }}</NuxtLink>
             <NuxtLink
+              to="/showcase"
+              class="hover:text-(--ui-primary)"
+            >{{ t('nav.showcase') }}</NuxtLink>
+            <NuxtLink
               to="/about"
               class="hover:text-(--ui-primary)"
             >{{ t('nav.about') }}</NuxtLink>

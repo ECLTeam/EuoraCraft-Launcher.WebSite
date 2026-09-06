@@ -4,7 +4,8 @@
     "features": "Features",
     "download": "Download",
     "docs": "Docs",
-    "about": "About"
+    "about": "About",
+    "showcase": "Live Preview"
   },
   "brand": {
     "tagline": "Modern Minecraft third-party launcher written in Python, with plugin extensibility.",
@@ -73,6 +74,16 @@
       "repo": "GitHub repository",
       "releases": "Releases",
       "wiki": "Project wiki"
+    }
+  },
+  "showcase": {
+    "title": "Live Preview",
+    "desc": "Try the EuoraCraft Launcher frontend right in your browser. The window below is a standalone showcase build with demo data that runs without the desktop runtime.",
+    "launch": "Open in a new window",
+    "note": "This is an independent demo; interactions are for display only and will not actually download or start Minecraft.",
+    "unconfigured": {
+      "title": "Preview site not configured yet",
+      "desc": "A launcher frontend demo window will be embedded here. Deploy the launcher's build:showcase output to a static host, then set that URL in the SHOWCASE_URL constant in constants.ts."
     }
   },
   "footer": {

@@ -4,7 +4,8 @@
     "features": "特性",
     "download": "下载",
     "docs": "文档",
-    "about": "关于"
+    "about": "关于",
+    "showcase": "页面浏览"
   },
   "brand": {
     "tagline": "使用 Python 编写的现代化 Minecraft 第三方启动器，支持插件拓展功能",
@@ -73,6 +74,16 @@
       "repo": "GitHub 仓库",
       "releases": "版本发布",
       "wiki": "项目文档"
+    }
+  },
+  "showcase": {
+    "title": "页面浏览",
+    "desc": "直接在浏览器里体验 EuoraCraft Launcher 的启动器前端界面。下方窗口为独立运行的展示版本，数据均为演示数据，可脱离桌面环境运行。",
+    "launch": "在新窗口打开",
+    "note": "本界面为独立演示版本，操作仅用于展示，不会实际下载或启动 Minecraft。",
+    "unconfigured": {
+      "title": "展示站点尚未配置",
+      "desc": "这里将内嵌一个启动器前端演示窗口。请先将启动器前端的 build:showcase 构建产物部署到某个静态托管地址，再将该地址填入 constants.ts 的 SHOWCASE_URL。"
     }
   },
   "footer": {
