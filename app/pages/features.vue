@@ -11,18 +11,20 @@ const { t } = useI18n()
       :description="t('featuresPage.desc')"
     />
 
-    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="site-container pb-16 pt-8">
+      <p class="mb-6 text-sm leading-7 text-muted">
+        {{ t('featuresPage.versionNote') }}
+      </p>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="(key, i) in featureKeys"
           :key="key"
-          v-reveal
-          :delay="(i % 3) * 70"
-          class="card-outline rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur"
+          v-reveal="{ delay: (i % 3) * 70 }"
+          class="ecl-surface ecl-surface--classic ecl-surface--interactive p-6"
         >
           <UIcon
             :name="t(`featureItems.${key}.icon`)"
-            class="size-7 text-(--ui-primary)"
+            class="size-7 ecl-link"
           />
           <h2 class="mt-4 text-lg font-semibold">
             {{ t(`featureItems.${key}.title`) }}

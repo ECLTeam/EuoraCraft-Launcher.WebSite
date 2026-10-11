@@ -5,61 +5,138 @@
     "download": "下载",
     "docs": "文档",
     "about": "关于",
-    "showcase": "页面浏览"
+    "showcase": "在线体验"
   },
   "brand": {
-    "tagline": "使用 Python 编写的现代化 Minecraft 第三方启动器，支持插件拓展功能",
-    "badge": "Minecraft 第三方启动器"
+    "tagline": "开源 Minecraft 启动器",
+    "badge": "Minecraft 第三方启动器 · 开源"
   },
   "home": {
     "hero": {
+      "badge": "Minecraft 第三方启动器 · 开源",
+      "desc": "开源 Minecraft 启动器，支持多实例管理、模组与资源安装、联机及插件扩展。",
       "download": "立即下载",
-      "learn": "了解特性",
-      "repo": "开源仓库 · GPL-3.0",
-      "imgAlt": "EuoraCraft Launcher 界面截图"
+      "demo": "在线体验",
+      "scroll": "向下浏览功能介绍",
+      "repo": "在 GitHub 上查看源码",
+      "meta": "GPL-3.0 开源",
+      "imgAlt": "EuoraCraft Launcher 启动器主界面",
+      "caption": "EuoraCraft Launcher · 启动器主界面"
     },
-    "features": {
-      "title": "核心特性",
-      "desc": "从插件系统到联机大厅，为你的个性化需求而生。",
-      "viewAll": "查看全部特性"
+    "stories": {
+      "eyebrow": "围绕你的游戏体验",
+      "title": "复杂的管理，简单地完成。",
+      "desc": "从整理实例到和朋友联机，让每一步都各就各位。",
+      "viewAll": "探索全部特性",
+      "imageNote": "当前开发版界面 · 演示数据",
+      "instances": {
+        "label": "实例与游戏管理",
+        "title": "独立管理不同游戏实例",
+        "desc": "为不同版本和整合包创建独立实例，分别管理模组、资源包、世界、服务器和截图。",
+        "alt": "ECL 实例管理：独立的游戏实例与版本列表"
+      },
+      "mods": {
+        "label": "模组与资源",
+        "title": "搜索和安装模组与资源",
+        "desc": "从 Modrinth、CurseForge 搜索 Mod、资源包、光影和整合包，按游戏版本与加载器筛选，并管理安装后的资源和更新。",
+        "alt": "ECL Mod 搜索界面：搜索栏和资源结果列表"
+      },
+      "connect": {
+        "label": "联机",
+        "title": "创建房间，与朋友联机",
+        "desc": "在启动器内创建或加入联机房间，使用虚拟网络连接，与朋友一起游戏。",
+        "alt": "ECL 联机大厅：房间列表和虚拟网络"
+      },
+      "plugins": {
+        "label": "插件扩展",
+        "title": "通过插件扩展启动器",
+        "desc": "通过 .eclplugin 包安装扩展，为认证、联机、崩溃分析与界面添加能力。插件在启动器进程中运行，请只安装可信来源的插件。",
+        "alt": "ECL 插件管理：插件列表与安装入口"
+      }
     },
-    "stack": {
-      "title": "技术栈",
-      "desc": "坚固的后端与现代化的前端共同驱动。"
+    "opensource": {
+      "eyebrow": "开源项目",
+      "title": "查看源码与参与项目",
+      "desc": "项目以 GPL-3.0 协议开源。可以在 GitHub 查看源码、提交问题和改进建议，使用说明与开发资料见文档站。",
+      "github": "查看 GitHub",
+      "issues": "提交 Issue",
+      "docs": "查看文档",
+      "license": "GPL-3.0",
+      "plugins": "支持插件扩展",
+      "community": "社区共同驱动"
     },
     "cta": {
-      "title": "准备好开始了吗？",
-      "desc": "从 GitHub Releases 下载最新版本，支持 Windows、Linux 与 macOS。",
-      "button": "前往下载"
+      "title": "下载 EuoraCraft Launcher",
+      "desc": "选择适合你的系统与架构的安装包，安装前请阅读对应版本说明。",
+      "button": "立即下载",
+      "github": "查看 GitHub"
+    },
+    "stages": {
+      "navigation": "首页分阶段浏览",
+      "previous": "上一阶段",
+      "next": "下一阶段",
+      "position": "第 {current} 阶段，共 {total} 阶段"
     }
   },
   "featuresPage": {
     "title": "特性",
-    "desc": "EuoraCraft Launcher 的核心能力，覆盖插件拓展、账户、实例与联机等方方面面。"
+    "desc": "从实例、资源与 Java 管理，到联机、插件和崩溃分析，了解 ECL 当前的核心能力。",
+    "versionNote": "以下介绍基于当前开发版。历史安装包可能不包含全部功能，请以下载版本的说明为准。"
   },
   "download": {
     "title": "下载",
     "desc": "从 GitHub Releases 获取最新版本。首次使用请先查阅文档与使用教程。",
     "latest": {
-      "title": "最新版本",
-      "desc": "访问 GitHub Releases 页面下载对应平台的安装包。",
+      "title": "获取发布版本",
+      "desc": "查看最新发布与预发布，按系统和架构选择安装包。各版本的功能和更新方式请以版本说明为准。",
       "button": "前往 Releases 下载"
     },
-    "platforms": "支持平台",
+    "platforms": "选择你的平台",
     "update": {
       "title": "更新方式",
-      "desc": "本项目不提供自动更新，基于 GitHub Releases 发布安装包，由用户从 Release 页面手动下载更新。请留意 Release 页面获取最新版本。"
+      "desc": "在设置 → 关于中检查更新。支持内置更新的打包版本可下载更新，并在确认后重启应用；源码运行、alpha 通道或旧版本可能需要从 Releases 手动更新。"
+    },
+    "platformNote": "安装包的平台和架构以所选版本的发布附件为准。",
+    "install": {
+      "title": "开始使用",
+      "steps": [
+        "在 Releases 中选择版本，并阅读该版本说明。",
+        "按系统和架构下载对应安装包或压缩包。",
+        "按版本说明安装或解压；首次使用请参考项目文档。"
+      ],
+      "docs": "阅读安装与使用指南",
+      "notes": "查看版本说明"
+    },
+    "release": {
+      "latest": "最新发布",
+      "savedVersion": "上次检测版本",
+      "prerelease": "预发布",
+      "stable": "正式发布",
+      "published": "发布于",
+      "download": "前往此版本下载",
+      "refresh": "重新检测",
+      "loading": "正在检测版本与更新日志…",
+      "noReleases": "暂无公开发布版本，请稍后查看。",
+      "error": "暂时无法检测版本，请重试或前往 GitHub Releases。",
+      "errorCached": "未能更新检测结果，以下显示上次成功检测的信息。",
+      "checked": "检测时间：",
+      "select": "选择发布版本",
+      "notesTitle": "更新日志",
+      "source": "查看发布页面",
+      "noNotes": "该版本尚未提供更新日志。",
+      "notesUnavailable": "更新日志暂时无法获取，可前往发布页面查看。",
+      "selectedVersion": "所选版本"
     }
   },
   "docs": {
     "view": "查看",
-    "desc": "使用教程、主题设计与插件扩展相关文档入口。更多内容请前往项目 Wiki。"
+    "desc": "从官方文档站开始了解 ECL，或查阅主题、插件格式、联机扩展和命令行的专题文档。"
   },
   "about": {
     "intro": {
       "title": "项目介绍"
     },
-    "stack": "技术栈",
+    "stack": "启动器技术栈",
     "license": {
       "title": "开源许可",
       "text": "项目源代码遵循 {code}；Logo 与图片素材遵循 {images}。源码托管于 GitHub。"
@@ -71,12 +148,12 @@
       "links": "链接",
       "repo": "GitHub 仓库",
       "releases": "版本发布",
-      "wiki": "项目文档"
+      "docs": "官方文档站"
     }
   },
   "showcase": {
-    "title": "页面浏览",
-    "desc": "直接在浏览器里体验 EuoraCraft Launcher 的启动器前端界面。下方窗口为独立运行的展示版本，数据均为演示数据，可脱离桌面环境运行。",
+    "title": "不下载，也可以先看看 ECL。",
+    "desc": "打开独立的启动器前端展示版本，体验界面与操作流程。所有数据均为演示数据，不会下载或启动 Minecraft。",
     "launch": "在新窗口打开",
     "note": "本界面为独立演示版本，操作仅用于展示，不会实际下载或启动 Minecraft。",
     "unconfigured": {
@@ -89,16 +166,12 @@
     "project": "项目",
     "repo": "GitHub 仓库",
     "releases": "版本发布",
-    "wiki": "项目文档",
     "issues": "提交 Issue",
-    "copyright": "代码遵循 {license}，Logo 与图片遵循 {images}。"
+    "copyright": "代码遵循 {license}，Logo 与图片遵循 {images}。",
+    "docs": "官方文档站"
   },
   "disclaimer": "EuoraCraft Launcher 是独立的第三方社区工具，与 Mojang Studios、Microsoft 或任何其子公司没有任何附属关系、背书关系或官方关联。",
   "docsItems": {
-    "wiki": {
-      "title": "项目文档（Wiki）",
-      "desc": "使用教程、常见问题与进阶指南，适合首次使用前阅读。"
-    },
     "themeDesigner": {
       "title": "主题设计指南",
       "desc": "在独立窗口中可视化编辑主题，并导出 .ecltheme 主题包。"
@@ -110,38 +183,96 @@
     "instanceCompat": {
       "title": "实例兼容扩展",
       "desc": "读取其他启动器的只读实例元数据，实现实例兼容。"
+    },
+    "guide": {
+      "title": "官方文档站",
+      "desc": "使用指南、开发说明与技术教程，作为 ECL 文档的主要入口。"
+    },
+    "gettingStarted": {
+      "title": "首次使用",
+      "desc": "了解账户、实例、资源与联机的基本用法，以及开始使用前的系统与版本说明。"
+    },
+    "pluginPackages": {
+      "title": ".eclplugin 插件格式",
+      "desc": "插件归档、依赖锁、离线 wheels、安装流程及实际运行边界。"
+    },
+    "themePlugin": {
+      "title": "主题包与扩展协议",
+      "desc": "了解 .ecltheme 主题包、外观能力与主题插件协议。"
+    },
+    "cli": {
+      "title": "命令行与快速启动",
+      "desc": "查看命令行参数、实例启动方式与脚本集成用法。"
     }
   },
   "featureItems": {
-    "plugin": {
-      "icon": "i-lucide-puzzle",
-      "title": "插件系统",
-      "desc": "后端插件、主题、联机扩展、认证、崩溃分析等扩展点，使用声明式权限模型控制插件能力。"
+    "instances": {
+      "icon": "i-lucide-boxes",
+      "title": "实例与游戏管理",
+      "desc": "集中管理多个游戏目录和实例，按实例配置 Java、内存与启动参数，管理世界、服务器、截图和日志。"
     },
-    "palette": {
-      "icon": "i-lucide-palette",
-      "title": "现代化 UI",
-      "desc": "Vue 3 + Naive UI + Tailwind CSS，支持亮暗主题、自定义外观与可视化主题设计器。"
+    "resources": {
+      "icon": "i-lucide-search",
+      "title": "Mod 与资源搜索",
+      "desc": "从 Modrinth、CurseForge 搜索 Mod、资源包、光影、数据包和整合包，按版本与加载器筛选，并管理已安装资源与更新。"
+    },
+    "java": {
+      "icon": "i-lucide-coffee",
+      "title": "Java 运行环境",
+      "desc": "扫描本地 Java，下载安装 Temurin，查看版本与架构，并为各实例选择合适的运行环境。"
     },
     "users": {
       "icon": "i-lucide-users",
-      "title": "多账户支持",
-      "desc": "微软账户登录 + Yggdrasil 认证，并支持离线模式与皮肤衣柜。"
-    },
-    "instances": {
-      "icon": "i-lucide-boxes",
-      "title": "实例管理",
-      "desc": "多版本实例隔离，独立配置，统一管理模组、资源包、世界、服务器与截图。"
+      "title": "账户与皮肤",
+      "desc": "支持微软账户、离线账户和外置认证；集中管理多账户、皮肤衣柜与角色外观。"
     },
     "lobby": {
       "icon": "i-lucide-wifi",
-      "title": "联机大厅",
-      "desc": "内置 EasyTier 虚拟网络与联机房间管理，支持插件扩展联机协议。"
+      "title": "联机与虚拟网络",
+      "desc": "使用 EasyTier 创建或加入联机房间，查看节点与网络状态，并通过插件扩展联机协议。"
+    },
+    "plugin": {
+      "icon": "i-lucide-puzzle",
+      "title": "插件安装与扩展",
+      "desc": "通过 .eclplugin 包安装插件，扩展认证、联机、崩溃分析与界面插槽；安装会核对来源确认和依赖条件，安装后通常需要重启。"
+    },
+    "palette": {
+      "icon": "i-lucide-palette",
+      "title": "Classic / Folia 外观",
+      "desc": "支持亮暗模式、强调色、Aurora、图片与视频背景，以及 Classic / Folia 界面风格；可用主题设计器导出主题包。"
+    },
+    "crash": {
+      "icon": "i-lucide-bug",
+      "title": "崩溃分析",
+      "desc": "收集游戏退出信息与崩溃日志，结合规则和模组信息分析可能原因，帮助定位问题。"
+    },
+    "tools": {
+      "icon": "i-lucide-wrench",
+      "title": "实用工具箱",
+      "desc": "自定义文件下载、Minecraft 皮肤 PNG 头像裁剪与导出、NAT 类型检测，集中放在更多工具页。"
+    },
+    "updates": {
+      "icon": "i-lucide-refresh-cw",
+      "title": "版本检查与更新",
+      "desc": "在设置的关于页检查启动器更新；支持内置更新的打包版本可下载更新，并在确认后重启应用。"
     },
     "i18n": {
       "icon": "i-lucide-languages",
-      "title": "国际化",
-      "desc": "内置 vue-i18n，支持多种语言，面向全球用户。"
+      "title": "多语言界面",
+      "desc": "支持多语言界面与语言切换，让账户、游戏管理、联机和设置都能用熟悉的语言操作。"
     }
+  },
+  "seo": {
+    "title": "EuoraCraft Launcher · 让 Minecraft 从容开始",
+    "description": "EuoraCraft Launcher 是一款开源 Minecraft 第三方启动器，提供实例与 Java 管理、Mod 和资源搜索、联机、插件扩展、崩溃分析与个性化主题。"
+  },
+  "a11y": {
+    "skip": "跳转到主要内容",
+    "language": "切换语言",
+    "theme": "切换主题",
+    "light": "切换到亮色主题",
+    "dark": "切换到暗色主题",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单"
   }
 }

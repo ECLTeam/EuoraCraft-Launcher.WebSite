@@ -5,61 +5,138 @@
     "download": "Download",
     "docs": "Docs",
     "about": "About",
-    "showcase": "Live Preview"
+    "showcase": "Live Demo"
   },
   "brand": {
-    "tagline": "Modern Minecraft third-party launcher written in Python, with plugin extensibility.",
-    "badge": "Third-party Minecraft launcher"
+    "tagline": "Open-source Minecraft launcher",
+    "badge": "Third-party Minecraft launcher · Open source"
   },
   "home": {
     "hero": {
+      "badge": "Third-party Minecraft launcher · Open source",
+      "desc": "An open-source Minecraft launcher with multiple instance management, mod and resource installation, multiplayer, and plugin extensions.",
       "download": "Download now",
-      "learn": "Explore features",
-      "repo": "Open source · GPL-3.0",
-      "imgAlt": "EuoraCraft Launcher interface screenshot"
+      "demo": "Live Demo",
+      "scroll": "Scroll to features",
+      "repo": "Explore the source on GitHub",
+      "meta": "Open source under GPL-3.0",
+      "imgAlt": "EuoraCraft Launcher home interface",
+      "caption": "EuoraCraft Launcher · Home interface"
     },
-    "features": {
-      "title": "Core features",
-      "desc": "From plugin system to multiplayer lobby, built for your personal needs.",
-      "viewAll": "View all features"
+    "stories": {
+      "eyebrow": "Built around your game",
+      "title": "Complex management. Simply done.",
+      "desc": "From organizing instances to playing with friends, everything has its place.",
+      "viewAll": "Explore all features",
+      "imageNote": "Current development interface · Demo data",
+      "instances": {
+        "label": "Instances & game management",
+        "title": "Manage game instances separately",
+        "desc": "Create separate instances for game versions and modpacks, with their own mods, resource packs, worlds, servers, and screenshots.",
+        "alt": "ECL instance management showing isolated game instances and versions"
+      },
+      "mods": {
+        "label": "Mods & resources",
+        "title": "Find and install mods and resources",
+        "desc": "Search Modrinth and CurseForge for mods, resource packs, shaders and modpacks. Filter by game version and loader, then manage installed resources and their updates.",
+        "alt": "ECL mod search with its search bar and resource results"
+      },
+      "connect": {
+        "label": "Multiplayer",
+        "title": "Create a room and play together",
+        "desc": "Create or join multiplayer rooms in the launcher and connect through a virtual network to play with friends.",
+        "alt": "ECL multiplayer lobby with rooms and virtual networking"
+      },
+      "plugins": {
+        "label": "Plugin extensions",
+        "title": "Extend the launcher with plugins",
+        "desc": "Install .eclplugin packages to extend authentication, multiplayer, crash analysis and the interface. Plugins run in the launcher process; install only plugins from sources you trust.",
+        "alt": "ECL plugin management with installed plugins and installation controls"
+      }
     },
-    "stack": {
-      "title": "Tech stack",
-      "desc": "A solid backend and a modern frontend working together."
+    "opensource": {
+      "eyebrow": "Open-source project",
+      "title": "View the source and contribute",
+      "desc": "ECL is open source under GPL-3.0. Explore the source and report issues or suggestions on GitHub. User guides and development resources are available in the documentation.",
+      "github": "View GitHub",
+      "issues": "Open an issue",
+      "docs": "Read the docs",
+      "license": "GPL-3.0",
+      "plugins": "Plugin ready",
+      "community": "Community driven"
     },
     "cta": {
-      "title": "Ready to get started?",
-      "desc": "Download the latest release from GitHub Releases, supporting Windows, Linux and macOS.",
-      "button": "Go to download"
+      "title": "Download EuoraCraft Launcher",
+      "desc": "Choose a package for your system and architecture, and read the release notes before installing.",
+      "button": "Download now",
+      "github": "View GitHub"
+    },
+    "stages": {
+      "navigation": "Homepage sections",
+      "previous": "Previous section",
+      "next": "Next section",
+      "position": "Section {current} of {total}"
     }
   },
   "featuresPage": {
     "title": "Features",
-    "desc": "The core capabilities of EuoraCraft Launcher, covering plugins, accounts, instances, multiplayer and more."
+    "desc": "Explore current ECL capabilities, from instances, resources and Java management to multiplayer, plugins and crash analysis.",
+    "versionNote": "These features describe the current development version. Older release packages may differ; check the notes for the version you download."
   },
   "download": {
     "title": "Download",
     "desc": "Get the latest version from GitHub Releases. Please read the docs and tutorials before your first use.",
     "latest": {
-      "title": "Latest version",
-      "desc": "Visit the GitHub Releases page to download the installer for your platform.",
+      "title": "Get a release",
+      "desc": "Browse releases and prereleases and choose a package for your system and architecture. Features and update support depend on the version.",
       "button": "Go to Releases"
     },
-    "platforms": "Supported platforms",
+    "platforms": "Choose your platform",
     "update": {
       "title": "Update method",
-      "desc": "This project provides no automatic updates. Installers are published via GitHub Releases, and users update manually from the Release page. Please watch the Releases page for the latest version."
+      "desc": "Check updates in Settings → About. Packaged versions with built-in update support can download an update and restart after confirmation. Source runs, alpha builds and older versions may require a manual update from Releases."
+    },
+    "platformNote": "Available platforms and architectures depend on the assets attached to the selected release.",
+    "install": {
+      "title": "Get started",
+      "steps": [
+        "Choose a version in Releases and read its release notes.",
+        "Download the installer or archive matching your system and architecture.",
+        "Follow the release instructions to install or extract it. Check the docs before your first use."
+      ],
+      "docs": "Read the setup guide",
+      "notes": "View release notes"
+    },
+    "release": {
+      "latest": "Latest release",
+      "savedVersion": "Last checked version",
+      "prerelease": "Prerelease",
+      "stable": "Stable release",
+      "published": "Published",
+      "download": "Download this release",
+      "refresh": "Check again",
+      "loading": "Checking versions and release notes…",
+      "noReleases": "No public releases are available yet. Please check back later.",
+      "error": "Unable to check releases. Try again or visit GitHub Releases.",
+      "errorCached": "Unable to refresh. The last successfully checked release is shown below.",
+      "checked": "Last checked:",
+      "select": "Choose a release",
+      "notesTitle": "Release notes",
+      "source": "View release page",
+      "noNotes": "Release notes have not been provided for this version.",
+      "notesUnavailable": "Release notes are unavailable. You can view the release page instead.",
+      "selectedVersion": "Selected release"
     }
   },
   "docs": {
     "view": "View",
-    "desc": "Tutorials, theme design and plugin extension documentation entries. More content is available in the project Wiki."
+    "desc": "Start with the official documentation site, or explore the theme, plugin package, multiplayer extension and command-line guides."
   },
   "about": {
     "intro": {
       "title": "About the project"
     },
-    "stack": "Tech stack",
+    "stack": "Launcher technology stack",
     "license": {
       "title": "Open source license",
       "text": "The source code is licensed under {code}; the logo and image assets follow {images}. The source is hosted on GitHub."
@@ -71,12 +148,12 @@
       "links": "Links",
       "repo": "GitHub repository",
       "releases": "Releases",
-      "wiki": "Project wiki"
+      "docs": "Official documentation"
     }
   },
   "showcase": {
-    "title": "Live Preview",
-    "desc": "Try the EuoraCraft Launcher frontend right in your browser. The window below is a standalone showcase build with demo data that runs without the desktop runtime.",
+    "title": "Meet ECL, without a download.",
+    "desc": "Explore the interface and workflows in the standalone frontend demo. All data is for demonstration; no Minecraft downloads or launches take place.",
     "launch": "Open in a new window",
     "note": "This is an independent demo; interactions are for display only and will not actually download or start Minecraft.",
     "unconfigured": {
@@ -89,16 +166,12 @@
     "project": "Project",
     "repo": "GitHub repository",
     "releases": "Releases",
-    "wiki": "Project wiki",
     "issues": "Open an issue",
-    "copyright": "Code is under {license}; the logo and images follow {images}."
+    "copyright": "Code is under {license}; the logo and images follow {images}.",
+    "docs": "Official documentation"
   },
   "disclaimer": "EuoraCraft Launcher is an independent third-party community tool, not affiliated with, endorsed by, or officially connected to Mojang Studios, Microsoft, or any of their subsidiaries.",
   "docsItems": {
-    "wiki": {
-      "title": "Project Wiki",
-      "desc": "Tutorials, frequently asked questions and advanced guides, recommended before your first use."
-    },
     "themeDesigner": {
       "title": "Theme design guide",
       "desc": "Visually edit themes in a dedicated window and export .ecltheme theme bundles."
@@ -110,38 +183,96 @@
     "instanceCompat": {
       "title": "Instance compatibility",
       "desc": "Read read-only instance metadata from other launchers for instance compatibility."
+    },
+    "guide": {
+      "title": "Official documentation",
+      "desc": "The main destination for user guides, development notes and technical tutorials."
+    },
+    "gettingStarted": {
+      "title": "Getting started",
+      "desc": "Learn the basics of accounts, instances, resources and multiplayer, and review system and version information before you begin."
+    },
+    "pluginPackages": {
+      "title": ".eclplugin package format",
+      "desc": "Plugin archives, dependency locks, offline wheels, installation and the actual runtime boundaries."
+    },
+    "themePlugin": {
+      "title": "Theme bundles & extension protocol",
+      "desc": "Learn about .ecltheme bundles, appearance capabilities and the theme plugin protocol."
+    },
+    "cli": {
+      "title": "Command line & quick launch",
+      "desc": "Command-line options, instance launch workflows and script integration."
     }
   },
   "featureItems": {
-    "plugin": {
-      "icon": "i-lucide-puzzle",
-      "title": "Plugin system",
-      "desc": "Extension points for backend plugins, themes, multiplayer connectors, auth, crash analysis and more, controlled by a declarative permission model."
+    "instances": {
+      "icon": "i-lucide-boxes",
+      "title": "Instances & game management",
+      "desc": "Manage multiple game directories and instances, configure Java, memory and launch arguments per instance, and organize worlds, servers, screenshots and logs."
     },
-    "palette": {
-      "icon": "i-lucide-palette",
-      "title": "Modern UI",
-      "desc": "Vue 3 + Naive UI + Tailwind CSS with light/dark themes, custom appearance and a visual theme designer."
+    "resources": {
+      "icon": "i-lucide-search",
+      "title": "Mods & resource search",
+      "desc": "Search Modrinth and CurseForge for mods, resource packs, shaders, data packs and modpacks. Filter by game version and loader, then manage installed resources and updates."
+    },
+    "java": {
+      "icon": "i-lucide-coffee",
+      "title": "Java runtimes",
+      "desc": "Discover local Java installations, download and install Temurin, inspect versions and architectures, and select a suitable runtime for each instance."
     },
     "users": {
       "icon": "i-lucide-users",
-      "title": "Multi-account support",
-      "desc": "Microsoft account login + Yggdrasil authentication, plus offline mode and a skin wardrobe."
-    },
-    "instances": {
-      "icon": "i-lucide-boxes",
-      "title": "Instance management",
-      "desc": "Isolated multi-version instances with independent config, managing mods, resource packs, worlds, servers and screenshots together."
+      "title": "Accounts & skins",
+      "desc": "Microsoft, offline and external authentication accounts, with centralized account management, a skin wardrobe and character appearance controls."
     },
     "lobby": {
       "icon": "i-lucide-wifi",
-      "title": "Multiplayer lobby",
-      "desc": "Built-in EasyTier virtual network and room management, with plugin-based connector protocol extensions."
+      "title": "Multiplayer & virtual networking",
+      "desc": "Create or join EasyTier multiplayer rooms, inspect nodes and network status, and extend connector protocols through plugins."
+    },
+    "plugin": {
+      "icon": "i-lucide-puzzle",
+      "title": "Plugin installation & extensions",
+      "desc": "Install .eclplugin packages to extend authentication, networking, crash analysis and UI slots. Installation checks source confirmation and dependencies; a restart is usually required."
+    },
+    "palette": {
+      "icon": "i-lucide-palette",
+      "title": "Classic / Folia appearance",
+      "desc": "Light and dark modes, accent colors, Aurora, image and video backgrounds, and Classic / Folia surfaces. Export theme bundles with the visual theme designer."
+    },
+    "crash": {
+      "icon": "i-lucide-bug",
+      "title": "Crash analysis",
+      "desc": "Collect exit information and crash logs, then analyze likely causes using rules and mod information to help diagnose problems."
+    },
+    "tools": {
+      "icon": "i-lucide-wrench",
+      "title": "Practical tools",
+      "desc": "Custom file downloads, Minecraft skin PNG avatar cropping and export, and NAT type detection, together in the More tools page."
+    },
+    "updates": {
+      "icon": "i-lucide-refresh-cw",
+      "title": "Version checks & updates",
+      "desc": "Check launcher updates in Settings → About. Packaged versions with built-in update support can download an update and restart after confirmation."
     },
     "i18n": {
       "icon": "i-lucide-languages",
-      "title": "Internationalization",
-      "desc": "Built-in vue-i18n with support for multiple languages, for users worldwide."
+      "title": "Multilingual interface",
+      "desc": "Switch interface languages and manage accounts, games, multiplayer and settings in a language you know."
     }
+  },
+  "seo": {
+    "title": "EuoraCraft Launcher · A thoughtful start to Minecraft",
+    "description": "EuoraCraft Launcher is an open-source Minecraft launcher with instance and Java management, mod and resource search, multiplayer, plugins, crash analysis and personal themes."
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "language": "Change language",
+    "theme": "Toggle theme",
+    "light": "Switch to light theme",
+    "dark": "Switch to dark theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   }
 }

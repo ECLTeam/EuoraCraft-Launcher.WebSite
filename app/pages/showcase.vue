@@ -9,7 +9,7 @@ const { t } = useI18n()
       :description="t('showcase.desc')"
     />
 
-    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="site-container pb-16 pt-8">
       <ShowcaseFrame />
     </div>
   </div>

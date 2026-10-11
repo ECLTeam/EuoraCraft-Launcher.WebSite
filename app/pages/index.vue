@@ -1,201 +1,206 @@
 <script setup lang="ts">
-import { BRAND, LINKS, TECH_STACK } from '~/constants'
-import { featureKeys } from '~/data/features'
-
-import show1 from '~/img/show-1.png'
-import show1Black from '~/img/show-1-black.png'
+import HomeHero from '~/components/home/HomeHero.vue'
+import HomeFeatureStories from '~/components/home/HomeFeatureStories.vue'
+import HomeOpenSource from '~/components/home/HomeOpenSource.vue'
+import HomeDownloadCta from '~/components/home/HomeDownloadCta.vue'
+import { HOME_STAGES } from '~/data/homeStages'
 
 const { t } = useI18n()
-const colorMode = useColorMode()
+const container = ref<HTMLElement | null>(null)
+const activeIndex = ref(0)
+const moving = ref(false)
+const showControls = ref(true)
+let pendingFocus = false
+let wheelTimer: ReturnType<typeof setTimeout> | undefined
+let wheelMode: 'reading' | 'paging' | undefined
+let wheelDistance = 0
+let wheelUsed = false
 
-const heroImg = computed(() => (colorMode.value === 'dark' ? show1Black : show1))
-const overviewKeys = computed(() => featureKeys.slice(0, 6))
+function currentReader() {
+  return container.value!.querySelectorAll<HTMLElement>('.home-stage-content')[activeIndex.value]!
+}
+
+function stages() {
+  return container.value!.querySelectorAll<HTMLElement>('.home-stage')
+}
+
+function stageTop(index: number) {
+  return stages()[index]!.getBoundingClientRect().top + window.scrollY
+}
+
+function updateViewport() {
+  showControls.value = window.scrollY <= stageTop(HOME_STAGES.length - 1) + 1
+}
+
+function canRead(reader: HTMLElement, direction: number) {
+  return direction > 0
+    ? reader.scrollTop + reader.clientHeight < reader.scrollHeight - 1
+    : reader.scrollTop > 1
+}
+
+function navigate(index: number) {
+  if (moving.value || index === activeIndex.value || index < 0 || index >= HOME_STAGES.length) return
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  moving.value = true
+  pendingFocus = true
+  window.scrollTo({ top: stageTop(index), behavior: reducedMotion ? 'instant' : 'smooth' })
+  if (reducedMotion) finishNavigation()
+}
+
+function finishNavigation() {
+  updateViewport()
+  if (!showControls.value) {
+    moving.value = false
+    pendingFocus = false
+    return
+  }
+  const index = Math.max(0, Math.min(HOME_STAGES.length - 1, Math.round((window.scrollY - stageTop(0)) / stages()[0]!.clientHeight)))
+  const destination = stageTop(index)
+  if (Math.abs(window.scrollY - destination) > 1) {
+    moving.value = true
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: destination, behavior: reducedMotion ? 'instant' : 'smooth' })
+    if (reducedMotion) finishNavigation()
+    return
+  }
+  activeIndex.value = index
+  moving.value = false
+  if (pendingFocus) {
+    stages()[activeIndex.value]?.focus({ preventScroll: true })
+    pendingFocus = false
+  }
+}
+
+function onWheel(event: WheelEvent) {
+  if (event.ctrlKey || Math.abs(event.deltaX) >= Math.abs(event.deltaY)) return
+  const reader = currentReader()
+  const delta = event.deltaY * (event.deltaMode === 1 ? 24 : event.deltaMode === 2 ? reader.clientHeight : 1)
+  const destination = activeIndex.value + Math.sign(delta)
+  if (!moving.value && !wheelMode && !canRead(reader, delta) && (destination < 0 || destination >= HOME_STAGES.length)) return
+  event.preventDefault()
+  wheelMode ??= canRead(reader, delta) ? 'reading' : 'paging'
+  clearTimeout(wheelTimer)
+  wheelTimer = setTimeout(() => {
+    wheelMode = undefined
+    wheelDistance = 0
+    wheelUsed = false
+  }, 180)
+  if (moving.value) {
+    wheelUsed = true
+    return
+  }
+  if (wheelMode === 'reading') {
+    reader.scrollTop += delta
+    return
+  }
+  if (wheelUsed) return
+  wheelDistance += delta
+  if (Math.abs(wheelDistance) < 32) return
+  wheelUsed = true
+  navigate(activeIndex.value + Math.sign(wheelDistance))
+}
+
+function onKeydown(event: KeyboardEvent) {
+  if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey) return
+  const target = event.target as HTMLElement
+  if (target.closest('input, textarea, select, [contenteditable="true"]')) return
+  const direction = ['ArrowDown', 'PageDown'].includes(event.key) || (event.key === ' ' && !event.shiftKey)
+    ? 1
+    : ['ArrowUp', 'PageUp'].includes(event.key) || (event.key === ' ' && event.shiftKey) ? -1 : 0
+  if (!direction) return
+  const reader = currentReader()
+  const destination = activeIndex.value + direction
+  if (!moving.value && !canRead(reader, direction) && (destination < 0 || destination >= HOME_STAGES.length)) return
+  event.preventDefault()
+  if (moving.value) return
+  if (canRead(reader, direction)) {
+    reader.scrollTop += direction * (event.key.startsWith('Arrow') ? 80 : reader.clientHeight * 0.9)
+    return
+  }
+  navigate(destination)
+}
+
+function onResize() {
+  if (showControls.value && !moving.value) {
+    window.scrollTo({ top: stageTop(activeIndex.value), behavior: 'instant' })
+  }
+  updateViewport()
+}
+
+onMounted(() => {
+  updateViewport()
+  document.addEventListener('scroll', updateViewport, { passive: true })
+  document.addEventListener('scrollend', finishNavigation)
+  window.addEventListener('resize', onResize)
+})
+
+onBeforeUnmount(() => {
+  clearTimeout(wheelTimer)
+  document.removeEventListener('scroll', updateViewport)
+  document.removeEventListener('scrollend', finishNavigation)
+  window.removeEventListener('resize', onResize)
+})
 </script>
 
 <template>
-  <div>
-    <!-- Hero -->
-    <section class="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden">
-      <div class="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
-        <div
-          v-reveal
-          class="max-w-xl"
-        >
-          <UBadge
-            color="primary"
-            variant="subtle"
-          >
-            {{ t('brand.badge') }}
-          </UBadge>
-
-          <h1 class="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
-            {{ BRAND.name }}
-          </h1>
-
-          <p class="mt-4 text-lg text-muted">
-            {{ t('brand.tagline') }}
-          </p>
-
-          <div
-            v-reveal
-            class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
-          >
-            <UButton
-              to="/download"
-              size="lg"
-              icon="i-lucide-download"
-              :label="t('home.hero.download')"
-              block
-              class="sm:w-auto"
-            />
-            <UButton
-              to="/features"
-              size="lg"
-              color="neutral"
-              variant="subtle"
-              icon="i-lucide-sparkles"
-              :label="t('home.hero.learn')"
-              block
-              class="sm:w-auto"
-            />
-          </div>
-
-          <div
-            v-reveal
-            class="mt-8 flex items-center gap-1 text-sm text-muted"
-          >
-            <UIcon
-              name="i-simple-icons-github"
-              class="size-4"
-            />
-            <a
-              :href="LINKS.repo"
-              target="_blank"
-              rel="noopener"
-              class="hover:text-(--ui-primary)"
-            >
-              {{ t('home.hero.repo') }}
-            </a>
-          </div>
-        </div>
-
-        <div
-          v-reveal
-          :delay="120"
-          class="relative"
-        >
-          <img
-            :src="heroImg"
-            :alt="t('home.hero.imgAlt')"
-            class="w-full rounded-2xl border border-(--ui-border) shadow-2xl"
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- 特性概览 -->
-    <section class="border-t border-(--ui-border)">
-      <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div
-          v-reveal
-          class="max-w-2xl"
-        >
-          <h2 class="text-3xl font-bold tracking-tight">
-            {{ t('home.features.title') }}
-          </h2>
-          <p class="mt-3 text-muted">
-            {{ t('home.features.desc') }}
-          </p>
-        </div>
-
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div
-            v-for="(key, i) in overviewKeys"
-            :key="key"
-            v-reveal
-            :delay="i * 70"
-            class="card-outline rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur"
-          >
-            <UIcon
-              :name="t(`featureItems.${key}.icon`)"
-              class="size-7 text-(--ui-primary)"
-            />
-            <h3 class="mt-4 font-semibold">
-              {{ t(`featureItems.${key}.title`) }}
-            </h3>
-            <p class="mt-2 text-sm text-muted">
-              {{ t(`featureItems.${key}.desc`) }}
-            </p>
-          </div>
-        </div>
-
-        <div
-          v-reveal
-          class="mt-10"
-        >
-          <UButton
-            to="/features"
-            color="neutral"
-            variant="ghost"
-            trailing-icon="i-lucide-arrow-right"
-            :label="t('home.features.viewAll')"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- 技术栈 -->
-    <section class="border-t border-(--ui-border)">
-      <div class="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
-        <div v-reveal>
-          <h2 class="text-2xl font-bold tracking-tight">
-            {{ t('home.stack.title') }}
-          </h2>
-          <p class="mt-2 text-muted">
-            {{ t('home.stack.desc') }}
-          </p>
-        </div>
-        <div
-          v-reveal
-          :delay="100"
-          class="mt-6 flex flex-wrap items-center justify-center gap-3"
-        >
-          <span
-            v-for="tech in TECH_STACK"
-            :key="tech"
-            class="rounded-full border border-(--ui-border) bg-(--ui-bg)/80 px-4 py-1.5 font-mono text-sm text-muted"
-          >
-            {{ tech }}
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 下载引导 -->
-    <section class="border-t border-(--ui-border)">
-      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div
-          v-reveal
-          class="card-lift rounded-2xl border border-(--ui-border) p-8 text-center sm:p-12"
-        >
-          <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">
-            {{ t('home.cta.title') }}
-          </h2>
-          <p class="mx-auto mt-3 max-w-xl text-muted">
-            {{ t('home.cta.desc') }}
-          </p>
-          <div
-            class="mt-6 flex justify-center transition-transform duration-300 ease-standard hover:-translate-y-px"
-          >
-            <UButton
-              to="/download"
-              size="lg"
-              icon="i-lucide-download"
-              :label="t('home.cta.button')"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+  <div
+    class="home-layout"
+  >
+    <div
+      ref="container"
+      class="home-page"
+      tabindex="0"
+      role="region"
+      :aria-label="t('home.stages.navigation')"
+      @wheel="onWheel"
+      @keydown="onKeydown"
+    >
+      <HomeHero />
+      <HomeFeatureStories />
+    </div>
+    <HomeStageNavigation
+      v-if="showControls"
+      :index="activeIndex"
+      :moving="moving"
+      @navigate="navigate"
+    />
+    <HomeOpenSource />
+    <HomeDownloadCta />
   </div>
 </template>
+
+<style scoped>
+.home-page {
+  position: relative;
+}
+.home-page:focus {
+  outline: none;
+}
+.home-page :deep(.home-stage) {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+}
+.home-page :deep(.home-stage:focus) {
+  outline: none;
+}
+.home-page :deep(.home-stage-content) {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 104px);
+  padding-block: calc(var(--site-header-height) + var(--site-header-inset) + 28px) 24px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+@media print {
+  .home-page,
+  .home-page :deep(.home-stage),
+  .home-page :deep(.home-stage-content) {
+    height: auto;
+    overflow: visible;
+  }
+  .home-layout :deep(.stage-navigation) {
+    display: none;
+  }
+}
+</style>

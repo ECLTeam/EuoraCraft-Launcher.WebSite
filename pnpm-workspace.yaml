@@ -1,7 +1,8 @@
 allowBuilds:
   '@parcel/watcher': false
   '@tailwindcss/oxide': false
-  better-sqlite3: true
+  # v13 ships platform prebuilds; rebuilding unnecessarily requires Windows C++ tools.
+  better-sqlite3: false
   esbuild: false
   unrs-resolver: false
   vue-demi: false

@@ -41,12 +41,12 @@ jobs:
         run: pnpm run build
 
       # 写入自定义域名 CNAME，使 GitHub Pages 映射到本站。
-      # 未配置仓库变量 CUSTOM_DOMAIN 时沿用默认域 eclteam.top
+      # 未配置仓库变量 CUSTOM_DOMAIN 时沿用默认域 euora.cn
       - name: Write custom domain (CNAME)
         shell: bash
         run: |
           DOMAIN="${{ vars.CUSTOM_DOMAIN }}"
-          if [ -z "$DOMAIN" ]; then DOMAIN="eclteam.top"; fi
+          if [ -z "$DOMAIN" ]; then DOMAIN="euora.cn"; fi
           printf '%s\n' "$DOMAIN" > dist/CNAME
 
       - uses: actions/configure-pages@v5

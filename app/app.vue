@@ -1,31 +1,47 @@
-<script setup>
-useHead({
-  htmlAttrs: {
-    lang: 'zh-CN'
-  }
-})
+<script setup lang="ts">
+import { BRAND } from '~/constants'
 
-const title = 'EuoraCraft Launcher - 现代化 Minecraft 第三方启动器'
-const description = 'EuoraCraft Launcher 官方网站：使用 Python 编写的现代化 Minecraft 第三方启动器，支持插件拓展、多账户、实例管理与联机大厅。'
-
+const { t, locale } = useI18n()
+const route = useRoute()
+const config = useRuntimeConfig()
+const pageKeys: Record<string, string> = { '/features': 'featuresPage.title', '/download': 'download.title', '/docs': 'nav.docs', '/about': 'nav.about', '/showcase': 'nav.showcase' }
+const title = computed(() => pageKeys[route.path] ? `${t(pageKeys[route.path]!)} · ${BRAND.name}` : t('seo.title'))
+const siteUrl = computed(() => String(config.public.siteUrl).replace(/\/$/, ''))
+useHead(() => ({
+  htmlAttrs: { lang: locale.value },
+  link: siteUrl.value ? [{ rel: 'canonical', href: `${siteUrl.value}${route.path}` }] : []
+}))
 useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
+  title: () => title.value,
+  description: () => t('seo.description'),
+  ogTitle: () => title.value,
+  ogDescription: () => t('seo.description'),
   ogType: 'website',
-  twitterCard: 'summary_large_image'
+  ogImage: () => `${siteUrl.value}/marketing/og-cover.png`,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageAlt: () => t('home.hero.imgAlt'),
+  ogLocale: () => locale.value === 'en-US' ? 'en_US' : 'zh_CN',
+  twitterCard: 'summary_large_image',
+  twitterImage: () => `${siteUrl.value}/marketing/og-cover.png`
 })
 </script>
 
 <template>
-  <UApp>
+  <UApp class="site-shell">
+    <a
+      href="#main-content"
+      class="skip-link"
+    >{{ t('a11y.skip') }}</a>
+    <EclAuroraBackdrop />
     <AppHeader />
-
-    <UMain>
+    <main
+      id="main-content"
+      class="site-main"
+      tabindex="-1"
+    >
       <NuxtPage />
-    </UMain>
-
+    </main>
     <AppFooter />
   </UApp>
 </template>

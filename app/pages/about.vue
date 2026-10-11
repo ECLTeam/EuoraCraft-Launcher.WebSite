@@ -15,12 +15,12 @@ const introMd = computed(() => (locale.value === 'en-US' ? aboutEn : aboutZh))
       :description="t('brand.tagline')"
     />
 
-    <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="site-container pb-16 pt-8">
       <div class="grid gap-10 lg:grid-cols-3">
         <div class="lg:col-span-2">
           <div v-reveal>
             <h2 class="text-xl font-bold">
-              {{ t('about.intro.title') }}
+              {{ t("about.intro.title") }}
             </h2>
             <MdContent
               :source="introMd"
@@ -30,7 +30,7 @@ const introMd = computed(() => (locale.value === 'en-US' ? aboutEn : aboutZh))
 
           <div v-reveal>
             <h3 class="mt-8 text-lg font-semibold">
-              {{ t('about.stack') }}
+              {{ t("about.stack") }}
             </h3>
             <div class="mt-3 flex flex-wrap gap-2">
               <span
@@ -45,19 +45,24 @@ const introMd = computed(() => (locale.value === 'en-US' ? aboutEn : aboutZh))
 
           <div v-reveal>
             <h3 class="mt-8 text-lg font-semibold">
-              {{ t('about.license.title') }}
+              {{ t("about.license.title") }}
             </h3>
             <p class="mt-3 text-muted">
-              {{ t('about.license.text', { code: LICENSE.code, images: LICENSE.images }) }}
+              {{
+                t("about.license.text", {
+                  code: LICENSE.code,
+                  images: LICENSE.images
+                })
+              }}
             </p>
           </div>
 
           <div v-reveal>
             <h3 class="mt-8 text-lg font-semibold">
-              {{ t('about.disclaimer') }}
+              {{ t("about.disclaimer") }}
             </h3>
             <p class="mt-3 text-sm text-muted">
-              {{ t('disclaimer') }}
+              {{ t("disclaimer") }}
             </p>
           </div>
         </div>
@@ -65,45 +70,47 @@ const introMd = computed(() => (locale.value === 'en-US' ? aboutEn : aboutZh))
         <aside class="space-y-4">
           <div
             v-reveal
-            class="card-outline rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 p-6 backdrop-blur"
+            class="ecl-surface ecl-surface--classic ecl-surface--interactive p-6"
           >
             <h3 class="font-semibold">
-              {{ t('about.sidebar.org') }}
+              {{ t("about.sidebar.org") }}
             </h3>
             <p class="mt-2 text-sm text-muted">
               {{ BRAND.org }}
             </p>
             <h3 class="mt-6 font-semibold">
-              {{ t('about.sidebar.contact') }}
+              {{ t("about.sidebar.contact") }}
             </h3>
             <a
               :href="`mailto:${BRAND.email}`"
-              class="mt-1 inline-block text-sm text-(--ui-primary)"
+              class="mt-1 inline-block text-sm ecl-link"
             >
               {{ BRAND.email }}
             </a>
             <h3 class="mt-6 font-semibold">
-              {{ t('about.sidebar.links') }}
+              {{ t("about.sidebar.links") }}
             </h3>
-            <nav class="mt-2 flex flex-col items-start gap-2 text-sm text-muted">
+            <nav
+              class="mt-2 flex flex-col items-start gap-2 text-sm text-muted"
+            >
               <a
                 :href="LINKS.repo"
                 target="_blank"
                 rel="noopener"
-                class="hover:text-(--ui-primary)"
-              >{{ t('about.sidebar.repo') }}</a>
+                class="hover:ecl-link"
+              >{{ t("about.sidebar.repo") }}</a>
               <a
                 :href="LINKS.releases"
                 target="_blank"
                 rel="noopener"
-                class="hover:text-(--ui-primary)"
-              >{{ t('about.sidebar.releases') }}</a>
+                class="hover:ecl-link"
+              >{{ t("about.sidebar.releases") }}</a>
               <a
-                :href="LINKS.wiki"
+                :href="locale === 'en-US' ? LINKS.docsEn : LINKS.docs"
                 target="_blank"
                 rel="noopener"
-                class="hover:text-(--ui-primary)"
-              >{{ t('about.sidebar.wiki') }}</a>
+                class="hover:ecl-link"
+              >{{ t("about.sidebar.docs") }}</a>
             </nav>
           </div>
         </aside>

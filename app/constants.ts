@@ -2,20 +2,26 @@ export const BRAND = {
   name: 'EuoraCraft Launcher',
   shortName: 'ECL',
   org: 'ECLTeam',
-  email: 'ECL@eclteam.top',
+  email: 'ECL@euora.cn',
   year: 2026
 }
 
 export const LINKS = {
   repo: 'https://github.com/ECLTeam/EuoraCraft-Launcher',
   releases: 'https://github.com/ECLTeam/EuoraCraft-Launcher/releases',
-  wiki: 'https://github.com/ECLTeam/EuoraCraft-Launcher/wiki',
+  docs: 'https://docs.euora.cn/',
+  docsEn: 'https://docs.euora.cn/en/',
   issues: 'https://github.com/ECLTeam/EuoraCraft-Launcher/issues'
 }
 
 // 文档入口仅保留「翻译 key + 跳转地址」，文案统一存放在 locales/ 字典
-export const DOCS = [
-  { key: 'wiki', href: LINKS.wiki },
+export const DOCS: { key: string, href: string, hrefEn?: string }[] = [
+  { key: 'guide', href: LINKS.docs, hrefEn: LINKS.docsEn },
+  {
+    key: 'gettingStarted',
+    href: 'https://docs.euora.cn/guide/introduction/',
+    hrefEn: 'https://docs.euora.cn/en/guide/introduction/'
+  },
   {
     key: 'themeDesigner',
     href: 'https://github.com/ECLTeam/EuoraCraft-Launcher/blob/main/docs/theme-designer-guide.zh-CN.md'
@@ -27,6 +33,18 @@ export const DOCS = [
   {
     key: 'instanceCompat',
     href: 'https://github.com/ECLTeam/EuoraCraft-Launcher/blob/main/docs/plugin-instance-compatibility.md'
+  },
+  {
+    key: 'pluginPackages',
+    href: 'https://github.com/ECLTeam/EuoraCraft-Launcher/blob/main/docs/eclplugin-package-format.md'
+  },
+  {
+    key: 'themePlugin',
+    href: 'https://github.com/ECLTeam/EuoraCraft-Launcher/blob/main/docs/theme-plugin-protocol.md'
+  },
+  {
+    key: 'cli',
+    href: 'https://github.com/ECLTeam/EuoraCraft-Launcher/blob/main/docs/launcher-cli.md'
   }
 ]
 
@@ -37,9 +55,11 @@ export const LICENSE = {
 
 export const TECH_STACK = [
   'Python',
-  'Tauri',
+  'PyTauri / Tauri 2',
   'Vue 3',
   'TypeScript',
+  'Vite',
+  'Tailwind CSS',
   'Naive UI',
-  'Tailwind CSS'
+  'EasyTier'
 ]

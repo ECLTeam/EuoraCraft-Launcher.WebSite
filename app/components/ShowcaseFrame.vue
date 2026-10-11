@@ -1,102 +1,120 @@
 <script setup lang="ts">
+import { BRAND } from '~/constants'
+
 const { t } = useI18n()
-
-// 展示地址由运行时配置注入（构建时可被 SHOWCASE_URL 环境变量覆盖）
-const showcaseUrl = computed(
-  () => (useRuntimeConfig().public.showcaseUrl as string | undefined) ?? ''
-)
-
-// 启动器前端按桌面窗口尺寸设计，以固定设计宽高 + transform 缩放适配容器宽度
+const config = useRuntimeConfig()
+const showcaseUrl = computed(() => String(config.public.showcaseUrl ?? ''))
 const DESIGN_WIDTH = 1280
 const DESIGN_HEIGHT = 800
-
 const frame = ref<HTMLElement | null>(null)
-const containerWidth = ref(0)
-
-const scale = computed(() => {
-  const avail = containerWidth.value || DESIGN_WIDTH
-  return Math.min(1, (avail - 48) / DESIGN_WIDTH)
-})
-
-const frameHeight = computed(() => DESIGN_HEIGHT * scale.value)
-
+const containerWidth = ref(DESIGN_WIDTH)
+const scale = computed(() =>
+  Math.max(0.1, Math.min(1, containerWidth.value / DESIGN_WIDTH))
+)
+let observer: ResizeObserver | undefined
 onMounted(() => {
   const el = frame.value
   if (!el) return
   containerWidth.value = el.clientWidth
-  const observer = new ResizeObserver(() => {
+  observer = new ResizeObserver(() => {
     containerWidth.value = el.clientWidth
   })
   observer.observe(el)
-  onBeforeUnmount(() => observer.disconnect())
 })
+onBeforeUnmount(() => observer?.disconnect())
 </script>
 
 <template>
-  <div
-    ref="frame"
-    class="w-full"
-  >
+  <div>
     <template v-if="showcaseUrl">
-      <div class="overflow-hidden rounded-2xl border border-(--ui-border) bg-(--ui-bg)/80 shadow-2xl backdrop-blur">
-        <div class="flex items-center gap-3 border-b border-(--ui-border) px-4 py-2.5">
-          <div class="flex gap-1.5">
-            <span class="size-3 rounded-full bg-red-400/90" />
-            <span class="size-3 rounded-full bg-yellow-400/90" />
-            <span class="size-3 rounded-full bg-green-400/90" />
-          </div>
-          <div class="flex min-w-0 flex-1 items-center gap-2 text-xs text-muted">
-            <UIcon
-              name="i-lucide-lock"
-              class="size-3.5 shrink-0 text-(--ui-primary)"
-            />
-            <span class="truncate">{{ showcaseUrl }}</span>
-          </div>
-          <UButton
+      <EclSurface class="showcase-window">
+        <div class="showcase-toolbar">
+          <UIcon
+            name="i-lucide-app-window"
+            class="size-4 ecl-link"
+          /><span>{{ BRAND.name }} · {{ t("nav.showcase") }}</span><UButton
             :href="showcaseUrl"
             target="_blank"
-            size="xs"
-            variant="ghost"
             color="neutral"
+            variant="ghost"
             icon="i-lucide-external-link"
             :aria-label="t('showcase.launch')"
+            :label="t('showcase.launch')"
           />
         </div>
-
         <div
-          class="overflow-hidden"
-          :style="{ height: `${frameHeight}px` }"
+          ref="frame"
+          class="showcase-frame"
         >
           <iframe
             :src="showcaseUrl"
-            title="EuoraCraft Launcher"
+            :title="t('showcase.title')"
             :width="DESIGN_WIDTH"
             :height="DESIGN_HEIGHT"
-            class="origin-top-left border-0"
             :style="{ transform: `scale(${scale})` }"
             allow="clipboard-write; fullscreen"
           />
         </div>
-      </div>
-      <p class="mt-3 text-xs text-muted">
-        {{ t('showcase.note') }}
+      </EclSurface>
+      <p class="mt-4 text-sm leading-7 text-muted">
+        {{ t("showcase.note") }}
       </p>
     </template>
-
-    <div
+    <EclSurface
       v-else
-      class="card-outline flex flex-col items-center rounded-2xl border border-dashed border-(--ui-border) bg-(--ui-bg)/60 p-16 text-center"
+      class="p-12 text-center"
     >
       <UIcon
         name="i-lucide-app-window"
-        class="size-12 text-(--ui-primary)"
+        class="size-12 ecl-link"
       />
-      <h3 class="mt-4 font-semibold">
-        {{ t('showcase.unconfigured.title') }}
-      </h3>
-      <p class="mt-2 max-w-md text-sm text-muted">
-        {{ t('showcase.unconfigured.desc') }}
+      <h2 class="mt-4 font-semibold">
+        {{ t("showcase.unconfigured.title") }}
+      </h2>
+      <p class="mt-2 text-sm text-muted">
+        {{ t("showcase.unconfigured.desc") }}
       </p>
-    </div>
+    </EclSurface>
   </div>
 </template>
+
+<style scoped>
+.showcase-window {
+  max-width: 1280px;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.showcase-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ecl-border);
+}
+.showcase-toolbar > span {
+  flex: 1;
+  font-size: 12px;
+}
+.showcase-toolbar a {
+  min-height: 44px;
+}
+.showcase-frame {
+  width: 100%;
+  aspect-ratio: 1280 / 800;
+  overflow: hidden;
+}
+.showcase-frame iframe {
+  display: block;
+  transform-origin: top left;
+  border: 0;
+}
+@media (max-width: 480px) {
+  .showcase-toolbar > span {
+    font-size: 10px;
+  }
+  .showcase-toolbar a {
+    font-size: 10px;
+  }
+}
+</style>
