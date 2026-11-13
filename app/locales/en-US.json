@@ -255,7 +255,29 @@
   },
   "seo": {
     "title": "EuoraCraft Launcher · A thoughtful start to Minecraft",
-    "description": "EuoraCraft Launcher is an open-source Minecraft launcher with instance and Java management, mod and resource search, plugins, crash analysis and personal themes."
+    "description": "EuoraCraft Launcher is an open-source Minecraft launcher with instance and Java management, mod and resource search, plugins, crash analysis and personal themes.",
+    "pages": {
+      "features": {
+        "title": "Features",
+        "description": "What ECL can do: instance and game management, Modrinth / CurseForge downloads, Java runtimes, accounts and wardrobe, plugins, themes, and crash analysis."
+      },
+      "download": {
+        "title": "Download",
+        "description": "Download EuoraCraft Launcher for Windows, macOS, and Linux, with release notes for every version."
+      },
+      "docs": {
+        "title": "Docs",
+        "description": "ECL documentation: getting started, instance compatibility, the .eclplugin format, theme packages, and command-line usage."
+      },
+      "about": {
+        "title": "About",
+        "description": "About EuoraCraft Launcher: GPL-3.0 open source, the Python + PyTauri / Vue 3 stack, capabilities, and plugin ecosystem."
+      },
+      "showcase": {
+        "title": "Live demo",
+        "description": "Try the EuoraCraft Launcher interface right in your browser — no download required."
+      }
+    }
   },
   "a11y": {
     "skip": "Skip to content",

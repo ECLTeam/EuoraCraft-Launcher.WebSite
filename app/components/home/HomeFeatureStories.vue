@@ -29,8 +29,8 @@ const stories = ['instances', 'mods', 'plugins']
       >
         <div class="shot-glow">
           <HomeLauncherWindowMockup
-            :width="1280"
-            :height="800"
+            :width="1264"
+            :height="791"
             :alt="t('home.hero.imgAlt')"
             eager
           />

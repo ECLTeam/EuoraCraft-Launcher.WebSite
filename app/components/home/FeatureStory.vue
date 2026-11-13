@@ -22,8 +22,8 @@ const { t } = useI18n()
         :src="`/marketing/launcher-${story}.webp`"
         :dark-src="`/marketing/launcher-${story}-dark.webp`"
         :alt="t(`home.stories.${story}.alt`)"
-        :width="1280"
-        :height="800"
+        :width="1264"
+        :height="791"
       />
       <figcaption>{{ t("home.stories.imageNote") }}</figcaption>
     </figure>

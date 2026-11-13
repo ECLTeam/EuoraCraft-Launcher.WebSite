@@ -11,8 +11,8 @@ withDefaults(
   {
     src: '/marketing/launcher-overview.webp',
     darkSrc: '/marketing/launcher-overview-dark.webp',
-    width: 1280,
-    height: 800,
+    width: 1264,
+    height: 791,
     eager: false
   }
 )

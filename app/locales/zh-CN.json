@@ -255,7 +255,29 @@
   },
   "seo": {
     "title": "EuoraCraft Launcher · 让 Minecraft 从容开始",
-    "description": "EuoraCraft Launcher 是一款开源 Minecraft 第三方启动器，提供实例与 Java 管理、Mod 和资源搜索、插件扩展、崩溃分析与个性化主题。"
+    "description": "EuoraCraft Launcher 是一款开源 Minecraft 第三方启动器，提供实例与 Java 管理、Mod 和资源搜索、插件扩展、崩溃分析与个性化主题。",
+    "pages": {
+      "features": {
+        "title": "特性",
+        "description": "ECL 的核心能力：实例与游戏管理、Modrinth / CurseForge 资源下载、Java 运行时、账户与衣柜、插件扩展、主题定制与崩溃分析。"
+      },
+      "download": {
+        "title": "下载",
+        "description": "下载 EuoraCraft Launcher：Windows、macOS、Linux 安装包与历史版本说明，选择适合你系统与架构的版本。"
+      },
+      "docs": {
+        "title": "文档",
+        "description": "ECL 文档入口：首次使用、实例兼容扩展、.eclplugin 插件格式、主题包与扩展协议、命令行参数。"
+      },
+      "about": {
+        "title": "关于",
+        "description": "了解 EuoraCraft Launcher：GPL-3.0 开源协议、Python + PyTauri / Vue 3 技术栈、支持的能力与插件生态。"
+      },
+      "showcase": {
+        "title": "在线体验",
+        "description": "在浏览器中直接体验 EuoraCraft Launcher 的界面与交互，无需下载安装。"
+      }
+    }
   },
   "a11y": {
     "skip": "跳转到主要内容",
