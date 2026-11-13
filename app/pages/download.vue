@@ -2,6 +2,7 @@
 import { LINKS } from '~/constants'
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 const { releases, latestRelease, status, checkedAt, check } = useReleaseDetection()
 const selectedTag = ref<string>()
 const release = computed(() => releases.value.find(item => item.tag === selectedTag.value) ?? latestRelease.value)
@@ -179,7 +180,7 @@ const platforms = [
           </ol>
           <div class="section-actions">
             <UButton
-              to="/docs"
+              :to="localePath('/docs')"
               color="neutral"
               variant="outline"
               icon="i-lucide-book-open"

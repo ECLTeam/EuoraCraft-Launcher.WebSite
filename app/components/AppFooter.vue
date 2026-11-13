@@ -2,6 +2,7 @@
 import { BRAND, LICENSE, LINKS } from '~/constants'
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
 const now = new Date().getFullYear()
 </script>
@@ -40,37 +41,37 @@ const now = new Date().getFullYear()
           </h3>
           <nav class="mt-3 flex flex-col items-start gap-2 text-sm text-muted">
             <NuxtLink
-              to="/"
+              :to="localePath('/')"
               class="hover:text-(--ui-primary)"
             >{{
               t("nav.home")
             }}</NuxtLink>
             <NuxtLink
-              to="/features"
+              :to="localePath('/features')"
               class="hover:text-(--ui-primary)"
             >{{
               t("nav.features")
             }}</NuxtLink>
             <NuxtLink
-              to="/download"
+              :to="localePath('/download')"
               class="hover:text-(--ui-primary)"
             >{{
               t("nav.download")
             }}</NuxtLink>
             <NuxtLink
-              to="/docs"
+              :to="localePath('/docs')"
               class="hover:text-(--ui-primary)"
             >{{
               t("nav.docs")
             }}</NuxtLink>
             <NuxtLink
-              to="/showcase"
+              :to="localePath('/showcase')"
               class="hover:text-(--ui-primary)"
             >{{
               t("nav.showcase")
             }}</NuxtLink>
             <NuxtLink
-              to="/about"
+              :to="localePath('/about')"
               class="hover:text-(--ui-primary)"
             >{{
               t("nav.about")

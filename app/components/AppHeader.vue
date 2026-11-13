@@ -2,6 +2,8 @@
 import { BRAND, LINKS } from '~/constants'
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
+const switchLocale = useLocaleSwitch()
 const route = useRoute()
 const mobileOpen = ref(false)
 const languages = [
@@ -18,13 +20,15 @@ const languageUi = {
   itemTrailingIcon: 'size-4 text-(--ecl-text-secondary)'
 }
 const links = computed(() => [
-  { label: t('nav.home'), to: '/' },
-  { label: t('nav.features'), to: '/features' },
-  { label: t('nav.showcase'), to: '/showcase' },
-  { label: t('nav.docs'), to: '/docs' },
-  { label: t('nav.about'), to: '/about' }
+  { label: t('nav.home'), to: localePath('/') },
+  { label: t('nav.features'), to: localePath('/features') },
+  { label: t('nav.showcase'), to: localePath('/showcase') },
+  { label: t('nav.docs'), to: localePath('/docs') },
+  { label: t('nav.about'), to: localePath('/about') }
 ])
-const isActive = (to: string) => route.path === to
+// 静态托管会在目录页补尾斜杠，比较前统一去掉
+const normalize = (path: string) => path.replace(/\/+$/, '') || '/'
+const isActive = (to: string) => normalize(route.path) === normalize(to)
 
 /* 桌面导航滑动指示器：悬停跟随（充能动画），移开后滑回激活项 */
 const desktopNav = ref<HTMLElement | null>(null)
@@ -79,7 +83,7 @@ function closeMenu() {
   >
     <div class="nav-bar">
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="nav-brand"
         :aria-label="BRAND.name"
       >
@@ -124,7 +128,7 @@ function closeMenu() {
       <div class="nav-controls">
         <ColorModeToggle class="nav-utility" />
         <USelect
-          v-model="locale"
+          :model-value="locale"
           :items="languages"
           variant="ghost"
           color="neutral"
@@ -133,6 +137,7 @@ function closeMenu() {
           :ui="languageUi"
           :content="{ position: 'popper', align: 'end', sideOffset: 6, bodyLock: false }"
           :aria-label="t('a11y.language')"
+          @update:model-value="switchLocale"
         />
         <UButton
           :to="LINKS.repo"
@@ -144,7 +149,7 @@ function closeMenu() {
           class="nav-github"
         />
         <UButton
-          to="/download"
+          :to="localePath('/download')"
           color="primary"
           variant="outline"
           icon="i-lucide-download"
@@ -179,7 +184,7 @@ function closeMenu() {
         <NuxtLink
           v-for="link in [
             ...links,
-            { label: t('nav.download'), to: '/download' }
+            { label: t('nav.download'), to: localePath('/download') }
           ]"
           :key="link.to"
           :to="link.to"

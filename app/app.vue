@@ -13,7 +13,15 @@ const pageKey: Record<string, string> = {
   '/about': 'about',
   '/showcase': 'showcase'
 }
-const seoKey = computed(() => pageKey[route.path])
+// 语言由 URL 决定：/en/* 为英文版本
+const isEn = computed(() => route.meta.locale === 'en-US')
+// 去掉 /en 前缀与尾斜杠后的语言无关路径：查 SEO 字典、生成两种语言地址都基于它
+const basePath = computed(() => {
+  const raw = isEn.value ? route.path.replace(/^\/en(?=\/|$)/, '') : route.path
+  const trimmed = raw.replace(/\/+$/, '')
+  return trimmed || '/'
+})
+const seoKey = computed(() => pageKey[basePath.value])
 const pageTitle = computed(() => seoKey.value ? t(`seo.pages.${seoKey.value}.title`) : '')
 const title = computed(() => seoKey.value
   ? `${pageTitle.value} · ${BRAND.name}`
@@ -24,12 +32,14 @@ const description = computed(() => seoKey.value
 
 const siteUrl = computed(() => String(config.public.siteUrl).replace(/\/$/, ''))
 // 静态托管对目录页会 301 到带尾斜杠的地址，canonical 直接输出最终形式，避免多一跳
-const canonical = computed(() => {
-  const path = route.path.replace(/\/$/, '')
-  return path ? `${siteUrl.value}${path}/` : `${siteUrl.value}/`
-})
+const trailing = (path: string) => path === '/' ? '/' : `${path.replace(/\/$/, '')}/`
+const zhUrl = computed(() => `${siteUrl.value}${trailing(basePath.value)}`)
+const enUrl = computed(() => basePath.value === '/'
+  ? `${siteUrl.value}/en/`
+  : `${siteUrl.value}/en${trailing(basePath.value)}`)
+const canonical = computed(() => isEn.value ? enUrl.value : zhUrl.value)
 // 在线体验为嵌入演示页，内容单一，避免与主站页面争夺索引
-const robots = computed(() => route.path === '/showcase'
+const robots = computed(() => basePath.value === '/showcase'
   ? 'noindex, follow'
   : 'index, follow, max-image-preview:large')
 
@@ -67,6 +77,10 @@ useHead(() => ({
   htmlAttrs: { lang: locale.value },
   link: [
     { rel: 'canonical', href: canonical.value },
+    // 两种语言互相声明，并给出默认版本，避免被判定为重复内容
+    { rel: 'alternate', hreflang: 'zh-CN', href: zhUrl.value },
+    { rel: 'alternate', hreflang: 'en', href: enUrl.value },
+    { rel: 'alternate', hreflang: 'x-default', href: zhUrl.value },
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }
   ],
@@ -93,7 +107,8 @@ useSeoMeta({
   ogImageWidth: 1200,
   ogImageHeight: 630,
   ogImageAlt: () => t('home.hero.imgAlt'),
-  ogLocale: () => locale.value === 'en-US' ? 'en_US' : 'zh_CN',
+  ogLocale: () => isEn.value ? 'en_US' : 'zh_CN',
+  ogLocaleAlternate: () => isEn.value ? ['zh_CN'] : ['en_US'],
   twitterCard: 'summary_large_image',
   twitterTitle: () => title.value,
   twitterDescription: () => description.value,

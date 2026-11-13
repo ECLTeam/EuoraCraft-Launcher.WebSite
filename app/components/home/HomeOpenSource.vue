@@ -2,6 +2,7 @@
 import { LINKS } from '~/constants'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -38,7 +39,7 @@ const { t } = useI18n()
             variant="ghost"
             :label="t('home.opensource.issues')"
           /><UButton
-            to="/docs"
+            :to="localePath('/docs')"
             icon="i-lucide-book-open"
             color="neutral"
             variant="ghost"

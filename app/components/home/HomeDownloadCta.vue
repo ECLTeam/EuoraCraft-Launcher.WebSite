@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { latestRelease, status } = useReleaseDetection()
 </script>
 
@@ -28,12 +29,12 @@ const { latestRelease, status } = useReleaseDetection()
         <p>{{ t("home.cta.desc") }}</p>
         <div class="cta-actions">
           <UButton
-            to="/download"
+            :to="localePath('/download')"
             size="lg"
             icon="i-lucide-download"
             :label="t('home.cta.button')"
           /><UButton
-            to="/download#release-notes"
+            :to="localePath('/download#release-notes')"
             size="lg"
             color="neutral"
             variant="ghost"

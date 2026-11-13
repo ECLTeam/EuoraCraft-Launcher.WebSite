@@ -2,6 +2,7 @@
 import { HOME_STAGES } from '~/data/homeStages'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const stories = ['instances', 'mods', 'plugins']
 </script>
 
@@ -41,7 +42,7 @@ const stories = ['instances', 'mods', 'plugins']
       </div>
       <div class="stories-more">
         <UButton
-          to="/features"
+          :to="localePath('/features')"
           color="neutral"
           variant="ghost"
           trailing-icon="i-lucide-arrow-right"

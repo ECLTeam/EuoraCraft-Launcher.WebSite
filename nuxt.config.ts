@@ -37,8 +37,27 @@ export default defineNuxtConfig({
   nitro: {
     output: { publicDir: 'dist' },
     prerender: {
-      routes: ['/', '/features', '/download', '/docs', '/showcase', '/about'],
+      routes: [
+        '/', '/features', '/download', '/docs', '/showcase', '/about',
+        '/en', '/en/features', '/en/download', '/en/docs', '/en/showcase', '/en/about'
+      ],
       failOnError: true
+    }
+  },
+  // 为每个页面克隆一份 /en 前缀的英文路由：两种语言各自拥有独立 URL，
+  // SSR / SSG 时按 route.meta.locale 直接输出对应语言，canonical 与 hreflang 才有意义
+  hooks: {
+    'pages:extend'(pages) {
+      const english = pages
+        .filter(page => !page.path.startsWith('/en'))
+        .map((page) => {
+          const clone = { ...page }
+          clone.path = page.path === '/' ? '/en' : `/en${page.path}`
+          if (page.name) clone.name = `${page.name}-en`
+          clone.meta = { ...page.meta, locale: 'en-US' }
+          return clone
+        })
+      pages.push(...english)
     }
   },
 

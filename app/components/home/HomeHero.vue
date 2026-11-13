@@ -2,6 +2,7 @@
 import { BRAND, LINKS } from '~/constants'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { latestRelease } = useReleaseDetection()
 </script>
 
@@ -30,13 +31,13 @@ const { latestRelease } = useReleaseDetection()
         </p>
         <div class="section-actions">
           <UButton
-            to="/download"
+            :to="localePath('/download')"
             size="lg"
             icon="i-lucide-download"
             :label="t('home.hero.download')"
           />
           <UButton
-            to="/showcase"
+            :to="localePath('/showcase')"
             size="lg"
             color="neutral"
             variant="ghost"
