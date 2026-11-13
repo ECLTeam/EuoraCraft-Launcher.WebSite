@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   // 构建时可用 NUXT_PUBLIC_SHOWCASE_URL 覆盖
   runtimeConfig: {
     public: {
-      siteUrl: 'https://euora.cn',
+      siteUrl: 'https://www.euora.cn',
       // 构建时可用 NUXT_PUBLIC_SHOWCASE_URL 覆盖；globalThis 读取以规避配置文件的 node 类型依赖
       showcaseUrl:
         (globalThis as { process?: { env?: Record<string, string> } }).process?.env

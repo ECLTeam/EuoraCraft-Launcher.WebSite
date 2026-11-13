@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://euora.cn/sitemap.xml
+Sitemap: https://www.euora.cn/sitemap.xml

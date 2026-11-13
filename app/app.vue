@@ -23,7 +23,11 @@ const description = computed(() => seoKey.value
   : t('seo.description'))
 
 const siteUrl = computed(() => String(config.public.siteUrl).replace(/\/$/, ''))
-const canonical = computed(() => `${siteUrl.value}${route.path === '/' ? '/' : route.path}`)
+// 静态托管对目录页会 301 到带尾斜杠的地址，canonical 直接输出最终形式，避免多一跳
+const canonical = computed(() => {
+  const path = route.path.replace(/\/$/, '')
+  return path ? `${siteUrl.value}${path}/` : `${siteUrl.value}/`
+})
 // 在线体验为嵌入演示页，内容单一，避免与主站页面争夺索引
 const robots = computed(() => route.path === '/showcase'
   ? 'noindex, follow'
