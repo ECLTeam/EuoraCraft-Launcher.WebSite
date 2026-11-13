@@ -22,13 +22,15 @@ const { t } = useI18n()
           v-reveal="{ delay: (i % 3) * 70 }"
           class="ecl-surface ecl-surface--classic ecl-surface--interactive p-6"
         >
-          <UIcon
-            :name="t(`featureItems.${key}.icon`)"
-            class="size-7 ecl-link"
-          />
-          <h2 class="mt-4 text-lg font-semibold">
-            {{ t(`featureItems.${key}.title`) }}
-          </h2>
+          <div class="flex items-center gap-3">
+            <UIcon
+              :name="t(`featureItems.${key}.icon`)"
+              class="size-6 shrink-0 ecl-link"
+            />
+            <h2 class="text-lg font-semibold">
+              {{ t(`featureItems.${key}.title`) }}
+            </h2>
+          </div>
           <p class="mt-2 text-sm text-muted">
             {{ t(`featureItems.${key}.desc`) }}
           </p>

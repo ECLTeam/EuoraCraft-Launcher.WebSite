@@ -3,6 +3,7 @@
     class="ecl-site-backdrop"
     aria-hidden="true"
   >
+    <div class="ecl-site-grid" />
     <div class="ecl-site-aurora" />
   </div>
 </template>
@@ -16,27 +17,23 @@
   pointer-events: none;
   background: var(--ecl-canvas);
 }
+/* 极淡的工程网格：自上而下淡出，提供纹理层次 */
+.ecl-site-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--ecl-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ecl-grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 90%);
+}
+/* Absolutely 基线：顶部一条强调色柔光 */
 .ecl-site-aurora {
   position: absolute;
-  inset: -12%;
-  opacity: 0.35;
+  inset: 0;
   background-image:
-    radial-gradient(42% 55% at 18% 22%, var(--aurora-c1), transparent 70%),
-    radial-gradient(38% 50% at 82% 30%, var(--aurora-c2), transparent 70%),
-    radial-gradient(50% 60% at 62% 88%, var(--aurora-c3), transparent 72%);
-  animation: aurora-drift 22s linear infinite alternate;
-}
-@keyframes aurora-drift {
-  from {
-    transform: translate3d(-1.5%, -1%, 0) scale(1);
-  }
-  to {
-    transform: translate3d(1.5%, 1%, 0) scale(1.04);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ecl-site-aurora {
-    animation: none;
-  }
+    radial-gradient(56% 42% at 50% -8%, var(--aurora-c1), transparent 72%),
+    radial-gradient(30% 26% at 12% 4%, var(--aurora-c2), transparent 72%),
+    radial-gradient(36% 30% at 88% 2%, var(--aurora-c3), transparent 74%);
 }
 </style>

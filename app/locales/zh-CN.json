@@ -14,21 +14,22 @@
   "home": {
     "hero": {
       "badge": "Minecraft 第三方启动器 · 开源",
-      "desc": "开源 Minecraft 启动器，支持多实例管理、模组与资源安装、联机及插件扩展。",
+      "desc": "开源 Minecraft 启动器，支持多实例管理、模组与资源安装、插件扩展与界面定制。",
       "download": "立即下载",
       "demo": "在线体验",
       "scroll": "向下浏览功能介绍",
       "repo": "在 GitHub 上查看源码",
       "meta": "GPL-3.0 开源",
       "imgAlt": "EuoraCraft Launcher 启动器主界面",
-      "caption": "EuoraCraft Launcher · 启动器主界面"
+      "caption": "EuoraCraft Launcher · 启动器主界面",
+      "platforms": "全平台"
     },
     "stories": {
       "eyebrow": "围绕你的游戏体验",
       "title": "复杂的管理，简单地完成。",
-      "desc": "从整理实例到和朋友联机，让每一步都各就各位。",
+      "desc": "从整理实例到安装模组，让每一步都各就各位。",
       "viewAll": "探索全部特性",
-      "imageNote": "当前开发版界面 · 演示数据",
+      "imageNote": "当前开发版真实界面",
       "instances": {
         "label": "实例与游戏管理",
         "title": "独立管理不同游戏实例",
@@ -41,16 +42,10 @@
         "desc": "从 Modrinth、CurseForge 搜索 Mod、资源包、光影和整合包，按游戏版本与加载器筛选，并管理安装后的资源和更新。",
         "alt": "ECL Mod 搜索界面：搜索栏和资源结果列表"
       },
-      "connect": {
-        "label": "联机",
-        "title": "创建房间，与朋友联机",
-        "desc": "在启动器内创建或加入联机房间，使用虚拟网络连接，与朋友一起游戏。",
-        "alt": "ECL 联机大厅：房间列表和虚拟网络"
-      },
       "plugins": {
         "label": "插件扩展",
         "title": "通过插件扩展启动器",
-        "desc": "通过 .eclplugin 包安装扩展，为认证、联机、崩溃分析与界面添加能力。插件在启动器进程中运行，请只安装可信来源的插件。",
+        "desc": "通过 .eclplugin 包安装扩展，为认证、崩溃分析与界面添加能力。插件在启动器进程中运行，请只安装可信来源的插件。",
         "alt": "ECL 插件管理：插件列表与安装入口"
       }
     },
@@ -80,7 +75,7 @@
   },
   "featuresPage": {
     "title": "特性",
-    "desc": "从实例、资源与 Java 管理，到联机、插件和崩溃分析，了解 ECL 当前的核心能力。",
+    "desc": "从实例与资源管理、账户与衣柜，到插件、原理图预览和崩溃分析，了解 ECL 当前的核心能力。",
     "versionNote": "以下介绍基于当前开发版。历史安装包可能不包含全部功能，请以下载版本的说明为准。"
   },
   "download": {
@@ -130,7 +125,7 @@
   },
   "docs": {
     "view": "查看",
-    "desc": "从官方文档站开始了解 ECL，或查阅主题、插件格式、联机扩展和命令行的专题文档。"
+    "desc": "从官方文档站开始了解 ECL，或查阅主题、插件格式、插件包与命令行的专题文档。"
   },
   "about": {
     "intro": {
@@ -176,10 +171,6 @@
       "title": "主题设计指南",
       "desc": "在独立窗口中可视化编辑主题，并导出 .ecltheme 主题包。"
     },
-    "pluginConnector": {
-      "title": "联机扩展协议",
-      "desc": "通过插件为联机大厅扩展自定义协议。"
-    },
     "instanceCompat": {
       "title": "实例兼容扩展",
       "desc": "读取其他启动器的只读实例元数据，实现实例兼容。"
@@ -190,7 +181,7 @@
     },
     "gettingStarted": {
       "title": "首次使用",
-      "desc": "了解账户、实例、资源与联机的基本用法，以及开始使用前的系统与版本说明。"
+      "desc": "了解账户、实例与资源的基本用法，以及开始使用前的系统与版本说明。"
     },
     "pluginPackages": {
       "title": ".eclplugin 插件格式",
@@ -209,37 +200,37 @@
     "instances": {
       "icon": "i-lucide-boxes",
       "title": "实例与游戏管理",
-      "desc": "集中管理多个游戏目录和实例，按实例配置 Java、内存与启动参数，管理世界、服务器、截图和日志。"
+      "desc": "为不同版本和整合包建立独立实例，分别配置 Java、内存与启动参数；集中查看已启动实例、世界、服务器、截图与日志，并支持导入 .zip / .mcworld 存档。"
     },
     "resources": {
       "icon": "i-lucide-search",
-      "title": "Mod 与资源搜索",
-      "desc": "从 Modrinth、CurseForge 搜索 Mod、资源包、光影、数据包和整合包，按版本与加载器筛选，并管理已安装资源与更新。"
+      "title": "资源与整合包下载",
+      "desc": "安装游戏版本，并从 Modrinth、CurseForge 下载 Mod、资源包、光影、数据包与整合包；按版本和加载器筛选，支持按下载量、关注量排序及已安装资源更新。"
     },
     "java": {
       "icon": "i-lucide-coffee",
       "title": "Java 运行环境",
-      "desc": "扫描本地 Java，下载安装 Temurin，查看版本与架构，并为各实例选择合适的运行环境。"
+      "desc": "扫描本地 Java，下载安装 Temurin 运行时，查看版本与架构；各实例可自动选择或手动指定合适的 Java。"
     },
     "users": {
       "icon": "i-lucide-users",
-      "title": "账户与皮肤",
-      "desc": "支持微软账户、离线账户和外置认证；集中管理多账户、皮肤衣柜与角色外观。"
+      "title": "账户与衣柜",
+      "desc": "支持微软设备码登录、离线账户和外置认证服务；多账户快速切换，本地衣柜管理皮肤与披风，提供 3D 预览、PNG 导入导出与皮肤上传。"
     },
-    "lobby": {
-      "icon": "i-lucide-wifi",
-      "title": "联机与虚拟网络",
-      "desc": "使用 EasyTier 创建或加入联机房间，查看节点与网络状态，并通过插件扩展联机协议。"
+    "schematic": {
+      "icon": "i-lucide-box",
+      "title": "原理图 3D 预览",
+      "desc": "在启动器内打开原理图，旋转、缩放查看整体结构，并按 Y 层切片逐层检查建造细节。"
     },
     "plugin": {
       "icon": "i-lucide-puzzle",
-      "title": "插件安装与扩展",
-      "desc": "通过 .eclplugin 包安装插件，扩展认证、联机、崩溃分析与界面插槽；安装会核对来源确认和依赖条件，安装后通常需要重启。"
+      "title": "插件扩展",
+      "desc": "通过 .eclplugin 包安装插件，为认证、崩溃分析与界面插槽添加能力；安装时会核对来源确认与依赖条件。"
     },
     "palette": {
       "icon": "i-lucide-palette",
-      "title": "Classic / Folia 外观",
-      "desc": "支持亮暗模式、强调色、Aurora、图片与视频背景，以及 Classic / Folia 界面风格；可用主题设计器导出主题包。"
+      "title": "四套内置主题",
+      "desc": "Classic、Folia、Absolutely 与四款 Catppuccin 风味，配合亮暗模式、强调色、图片 / 视频背景、透明度、模糊、字体与圆角自定义。"
     },
     "crash": {
       "icon": "i-lucide-bug",
@@ -249,7 +240,7 @@
     "tools": {
       "icon": "i-lucide-wrench",
       "title": "实用工具箱",
-      "desc": "自定义文件下载、Minecraft 皮肤 PNG 头像裁剪与导出、NAT 类型检测，集中放在更多工具页。"
+      "desc": "自定义文件下载、Minecraft 皮肤 PNG 头像裁剪与导出，集中在更多工具页。"
     },
     "updates": {
       "icon": "i-lucide-refresh-cw",
@@ -258,13 +249,13 @@
     },
     "i18n": {
       "icon": "i-lucide-languages",
-      "title": "多语言界面",
-      "desc": "支持多语言界面与语言切换，让账户、游戏管理、联机和设置都能用熟悉的语言操作。"
+      "title": "六种界面语言",
+      "desc": "简体中文、繁體中文、English、日本語、Deutsch、Русский 六种界面语言，账户、游戏管理与设置都能用熟悉的语言操作。"
     }
   },
   "seo": {
     "title": "EuoraCraft Launcher · 让 Minecraft 从容开始",
-    "description": "EuoraCraft Launcher 是一款开源 Minecraft 第三方启动器，提供实例与 Java 管理、Mod 和资源搜索、联机、插件扩展、崩溃分析与个性化主题。"
+    "description": "EuoraCraft Launcher 是一款开源 Minecraft 第三方启动器，提供实例与 Java 管理、Mod 和资源搜索、插件扩展、崩溃分析与个性化主题。"
   },
   "a11y": {
     "skip": "跳转到主要内容",

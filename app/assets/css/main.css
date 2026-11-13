@@ -8,18 +8,18 @@
     "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", Consolas, "Cascadia Code", monospace;
 
-  /* 品牌主色阶谱：以启动器设计系统主色 #5B6FF5 为核心 */
-  --color-ecl-50: #eef1fd;
-  --color-ecl-100: #e0e5fc;
-  --color-ecl-200: #c5cdf9;
-  --color-ecl-300: #9daaf5;
-  --color-ecl-400: #7a88f2;
-  --color-ecl-500: #5b6ff5;
-  --color-ecl-600: #4a58e0;
-  --color-ecl-700: #3c48bc;
-  --color-ecl-800: #333d99;
-  --color-ecl-900: #2d357a;
-  --color-ecl-950: #181c44;
+  /* 品牌主色阶谱：Absolutely 强调色（浅色 #2563eb / 深色 #3b82f6），即 Tailwind blue */
+  --color-ecl-50: #eff6ff;
+  --color-ecl-100: #dbeafe;
+  --color-ecl-200: #bfdbfe;
+  --color-ecl-300: #93c5fd;
+  --color-ecl-400: #60a5fa;
+  --color-ecl-500: #3b82f6;
+  --color-ecl-600: #2563eb;
+  --color-ecl-700: #1d4ed8;
+  --color-ecl-800: #1e40af;
+  --color-ecl-900: #1e3a8a;
+  --color-ecl-950: #172554;
 
   /* 全站非线性缓动曲线（Bernstein 贝塞尔插值） */
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
@@ -75,15 +75,14 @@
   transform: translateY(-8px);
 }
 
-/* ── 卡片悬浮：轻弹抬起，柔和到停 ── */
+/* ── 卡片悬浮：Absolutely 扁平反馈——加深描边与阴影，不做上浮位移 ── */
 .card-lift {
   transition:
-    transform 0.2s var(--ease-emphasized),
-    box-shadow 0.4s var(--ease-standard),
-    border-color 0.3s var(--ease-standard);
+    border-color 0.3s var(--ease-standard),
+    box-shadow 0.3s var(--ease-standard);
 }
 .card-lift:hover {
-  transform: translateY(-2px);
+  border-color: var(--ecl-border-strong);
   box-shadow: var(--ecl-shadow-pop);
 }
 

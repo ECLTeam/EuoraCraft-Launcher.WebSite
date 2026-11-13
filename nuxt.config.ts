@@ -55,7 +55,7 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
       // Feature icons referenced through locale dictionaries need an explicit bundle entry.
-      icons: ['lucide:boxes', 'lucide:palette', 'lucide:wifi', 'lucide:languages', 'lucide:search', 'lucide:coffee', 'lucide:bug', 'lucide:wrench', 'lucide:refresh-cw', 'lucide:file-text']
+      icons: ['lucide:boxes', 'lucide:palette', 'lucide:wifi', 'lucide:users', 'lucide:puzzle', 'lucide:box', 'lucide:languages', 'lucide:search', 'lucide:coffee', 'lucide:bug', 'lucide:wrench', 'lucide:refresh-cw', 'lucide:file-text']
     }
   },
   image: { format: ['webp'], quality: 85 }

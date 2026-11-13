@@ -43,7 +43,7 @@ const body = computed(() => DOMPurify.sanitize(marked.parse(props.source, { asyn
 .release-notes-body :deep(pre) {
   padding: 12px;
   border: 1px solid var(--ecl-border);
-  border-radius: 6px;
+  border-radius: var(--ecl-radius-control);
   overflow-x: auto;
   background: var(--ecl-surface-muted);
 }

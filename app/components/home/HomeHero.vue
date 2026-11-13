@@ -2,40 +2,49 @@
 import { BRAND, LINKS } from '~/constants'
 
 const { t } = useI18n()
+const { latestRelease } = useReleaseDetection()
 </script>
 
 <template>
   <section
     id="home-intro"
-    class="home-stage hero-stage"
-    tabindex="-1"
+    class="hero"
     :aria-label="BRAND.name"
   >
-    <div class="home-stage-content">
-      <div class="home-hero site-container">
-        <div class="hero-copy">
-          <h1>
-            {{ BRAND.name }}
-          </h1>
-          <p class="section-description">
-            {{ t("home.hero.desc") }}
-          </p>
-          <div class="section-actions">
-            <UButton
-              to="/download"
-              size="xl"
-              icon="i-lucide-download"
-              :label="t('home.hero.download')"
-            />
-            <UButton
-              to="/showcase"
-              size="xl"
-              color="neutral"
-              variant="ghost"
-              trailing-icon="i-lucide-arrow-right"
-              :label="t('home.hero.demo')"
-            />
-          </div>
+    <div class="site-container hero-inner">
+      <div
+        v-reveal
+        class="hero-copy"
+      >
+        <div class="hero-badges">
+          <span class="hero-pill hero-pill--accent">{{ t("home.hero.badge") }}</span>
+          <span
+            v-if="latestRelease"
+            class="hero-pill hero-pill--mono"
+          >{{ latestRelease.tag }}</span>
+          <span class="hero-pill">{{ t("home.hero.platforms") }}</span>
+        </div>
+        <h1>{{ BRAND.name }}</h1>
+        <p class="section-description">
+          {{ t("home.hero.desc") }}
+        </p>
+        <div class="section-actions">
+          <UButton
+            to="/download"
+            size="lg"
+            icon="i-lucide-download"
+            :label="t('home.hero.download')"
+          />
+          <UButton
+            to="/showcase"
+            size="lg"
+            color="neutral"
+            variant="ghost"
+            trailing-icon="i-lucide-arrow-right"
+            :label="t('home.hero.demo')"
+          />
+        </div>
+        <div class="hero-meta">
           <a
             :href="LINKS.repo"
             target="_blank"
@@ -50,20 +59,11 @@ const { t } = useI18n()
             name="i-lucide-arrow-up-right"
             class="size-3.5"
           /></a>
-          <p class="hero-meta">
-            {{ t("home.hero.meta") }}
-          </p>
-        </div>
-        <div class="hero-visual">
-          <HomeLauncherWindowMockup
-            :width="962"
-            :height="602"
-            :alt="t('home.hero.imgAlt')"
-            eager
-          />
-          <p class="hero-caption">
-            {{ t("home.hero.caption") }}
-          </p>
+          <span
+            class="hero-meta-note"
+            aria-hidden="true"
+          >·</span>
+          <span class="hero-meta-text">{{ t("home.hero.meta") }}</span>
         </div>
       </div>
     </div>
@@ -71,89 +71,99 @@ const { t } = useI18n()
 </template>
 
 <style scoped>
-.home-hero {
-  margin-block: auto;
-  flex-shrink: 0;
-  display: grid;
-  grid-template-columns: 0.88fr 1.3fr;
+/* 整屏 hero：介绍文案在第一屏垂直居中，产品介绍与图整体推到折叠线以下 */
+.hero {
+  min-height: calc(100svh - var(--site-header-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(32px, 4vw, 56px);
+}
+.hero-inner {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  align-content: center;
-  gap: 40px;
 }
 .hero-copy {
-  position: relative;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 680px;
+  text-align: center;
 }
-h1 {
-  font-size: clamp(32px, 2.9vw, 42px);
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  font-weight: 600;
+.hero-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 12px;
+  border: 1px solid var(--ecl-border);
+  border-radius: 999px;
+  background: var(--ecl-surface);
+  color: var(--ecl-text-secondary);
+  font-size: 12px;
   white-space: nowrap;
 }
+.hero-pill--mono {
+  font-family: var(--font-mono);
+  color: var(--ecl-text);
+}
+.hero-pill--accent {
+  border-color: var(--ecl-primary-alpha-strong);
+  background: var(--ecl-primary-alpha);
+  color: var(--ecl-link);
+  font-weight: 500;
+}
+h1 {
+  margin: 20px 0 0;
+  font-size: clamp(34px, 4.2vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  text-wrap: balance;
+  background: linear-gradient(180deg, var(--ecl-text) 55%, var(--ecl-text-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 .hero-copy .section-description {
-  max-width: 420px;
+  max-width: 520px;
+  margin-top: 16px;
+}
+.hero-copy .section-actions {
+  margin-top: 24px;
+  justify-content: center;
+}
+.hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  color: var(--ecl-text-tertiary);
+  font-size: 13px;
 }
 .hero-github {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 26px;
   color: var(--ecl-text-secondary);
-  font-size: 13px;
+  transition: color 150ms var(--ease-standard);
 }
 .hero-github:hover {
   color: var(--ecl-link);
 }
-.hero-meta {
-  margin-top: 12px;
-  font-size: 12px;
-  line-height: 1.8;
-  color: var(--ecl-text-tertiary);
-}
-.hero-visual {
-  position: relative;
-  min-width: 0;
-}
-.hero-caption {
-  text-align: center;
-  margin-top: 16px;
-  color: var(--ecl-text-tertiary);
-  font-size: 12px;
-}
-@media (max-width: 1023px) {
-  .home-hero {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  .hero-copy {
-    max-width: 660px;
-  }
-  h1 {
-    font-size: clamp(32px, 4.5vw, 42px);
-  }
-  .hero-visual {
-    max-width: 820px;
-  }
-}
 @media (max-width: 767px) {
-  .home-hero {
-    gap: 36px;
-  }
-  h1 {
-    font-size: clamp(28px, 7.2vw, 40px);
-  }
-  .hero-copy .section-actions {
-    gap: 8px;
-  }
-}
-@media (max-width: 480px) {
-  .hero-copy .section-actions {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  .hero-copy .section-actions > a {
-    justify-content: center;
+  .section-actions > a {
+    min-height: 44px;
   }
 }
 </style>

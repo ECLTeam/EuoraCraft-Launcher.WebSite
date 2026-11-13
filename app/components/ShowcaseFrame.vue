@@ -83,7 +83,7 @@ onBeforeUnmount(() => observer?.disconnect())
   max-width: 1280px;
   margin-inline: auto;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--ecl-radius-card);
 }
 .showcase-toolbar {
   display: flex;

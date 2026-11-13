@@ -14,21 +14,22 @@
   "home": {
     "hero": {
       "badge": "Third-party Minecraft launcher · Open source",
-      "desc": "An open-source Minecraft launcher with multiple instance management, mod and resource installation, multiplayer, and plugin extensions.",
+      "desc": "An open-source Minecraft launcher with multi-instance management, mod and resource installation, plugin extensions, and interface customization.",
       "download": "Download now",
       "demo": "Live Demo",
       "scroll": "Scroll to features",
       "repo": "Explore the source on GitHub",
       "meta": "Open source under GPL-3.0",
       "imgAlt": "EuoraCraft Launcher home interface",
-      "caption": "EuoraCraft Launcher · Home interface"
+      "caption": "EuoraCraft Launcher · Home interface",
+      "platforms": "All platforms"
     },
     "stories": {
       "eyebrow": "Built around your game",
       "title": "Complex management. Simply done.",
-      "desc": "From organizing instances to playing with friends, everything has its place.",
+      "desc": "From organizing instances to installing mods, everything has its place.",
       "viewAll": "Explore all features",
-      "imageNote": "Current development interface · Demo data",
+      "imageNote": "Real interface from the current development build",
       "instances": {
         "label": "Instances & game management",
         "title": "Manage game instances separately",
@@ -41,16 +42,10 @@
         "desc": "Search Modrinth and CurseForge for mods, resource packs, shaders and modpacks. Filter by game version and loader, then manage installed resources and their updates.",
         "alt": "ECL mod search with its search bar and resource results"
       },
-      "connect": {
-        "label": "Multiplayer",
-        "title": "Create a room and play together",
-        "desc": "Create or join multiplayer rooms in the launcher and connect through a virtual network to play with friends.",
-        "alt": "ECL multiplayer lobby with rooms and virtual networking"
-      },
       "plugins": {
         "label": "Plugin extensions",
         "title": "Extend the launcher with plugins",
-        "desc": "Install .eclplugin packages to extend authentication, multiplayer, crash analysis and the interface. Plugins run in the launcher process; install only plugins from sources you trust.",
+        "desc": "Install .eclplugin packages to extend authentication, crash analysis and the interface. Plugins run in the launcher process; install only plugins from sources you trust.",
         "alt": "ECL plugin management with installed plugins and installation controls"
       }
     },
@@ -80,7 +75,7 @@
   },
   "featuresPage": {
     "title": "Features",
-    "desc": "Explore current ECL capabilities, from instances, resources and Java management to multiplayer, plugins and crash analysis.",
+    "desc": "From instance and resource management to accounts, wardrobe, plugins, schematic preview, and crash analysis — the core capabilities of ECL today.",
     "versionNote": "These features describe the current development version. Older release packages may differ; check the notes for the version you download."
   },
   "download": {
@@ -130,7 +125,7 @@
   },
   "docs": {
     "view": "View",
-    "desc": "Start with the official documentation site, or explore the theme, plugin package, multiplayer extension and command-line guides."
+    "desc": "Start from the official docs site, or browse topics on themes, plugin formats, plugin packages, and the command line."
   },
   "about": {
     "intro": {
@@ -176,10 +171,6 @@
       "title": "Theme design guide",
       "desc": "Visually edit themes in a dedicated window and export .ecltheme theme bundles."
     },
-    "pluginConnector": {
-      "title": "Multiplayer connector protocol",
-      "desc": "Extend the multiplayer lobby with custom protocols via plugins."
-    },
     "instanceCompat": {
       "title": "Instance compatibility",
       "desc": "Read read-only instance metadata from other launchers for instance compatibility."
@@ -190,7 +181,7 @@
     },
     "gettingStarted": {
       "title": "Getting started",
-      "desc": "Learn the basics of accounts, instances, resources and multiplayer, and review system and version information before you begin."
+      "desc": "Learn the basics of accounts, instances, and resources, plus the system and version requirements before you start."
     },
     "pluginPackages": {
       "title": ".eclplugin package format",
@@ -209,62 +200,62 @@
     "instances": {
       "icon": "i-lucide-boxes",
       "title": "Instances & game management",
-      "desc": "Manage multiple game directories and instances, configure Java, memory and launch arguments per instance, and organize worlds, servers, screenshots and logs."
+      "desc": "Keep separate instances for different versions and modpacks, each with its own Java, memory, and launch arguments. Track running instances, worlds, servers, screenshots, and logs, and import .zip / .mcworld saves."
     },
     "resources": {
       "icon": "i-lucide-search",
-      "title": "Mods & resource search",
-      "desc": "Search Modrinth and CurseForge for mods, resource packs, shaders, data packs and modpacks. Filter by game version and loader, then manage installed resources and updates."
+      "title": "Mods, packs & downloads",
+      "desc": "Install game versions and download Mods, resource packs, shaders, data packs, and modpacks from Modrinth and CurseForge — filtered by version and loader, sortable by downloads or follows, with update management."
     },
     "java": {
       "icon": "i-lucide-coffee",
-      "title": "Java runtimes",
-      "desc": "Discover local Java installations, download and install Temurin, inspect versions and architectures, and select a suitable runtime for each instance."
+      "title": "Java runtime",
+      "desc": "Scan local Java installations, download and install Temurin runtimes, and let each instance pick the right Java automatically or pin one manually."
     },
     "users": {
       "icon": "i-lucide-users",
-      "title": "Accounts & skins",
-      "desc": "Microsoft, offline and external authentication accounts, with centralized account management, a skin wardrobe and character appearance controls."
+      "title": "Accounts & wardrobe",
+      "desc": "Microsoft device-code sign-in, offline accounts, and third-party auth. Switch accounts quickly and keep a local skin and cape wardrobe with 3D preview, PNG import/export, and skin upload."
     },
-    "lobby": {
-      "icon": "i-lucide-wifi",
-      "title": "Multiplayer & virtual networking",
-      "desc": "Create or join EasyTier multiplayer rooms, inspect nodes and network status, and extend connector protocols through plugins."
+    "schematic": {
+      "icon": "i-lucide-box",
+      "title": "3D schematic preview",
+      "desc": "Open schematic files inside the launcher, rotate and zoom the whole structure, and slice by Y layer to inspect the details."
     },
     "plugin": {
       "icon": "i-lucide-puzzle",
-      "title": "Plugin installation & extensions",
-      "desc": "Install .eclplugin packages to extend authentication, networking, crash analysis and UI slots. Installation checks source confirmation and dependencies; a restart is usually required."
+      "title": "Plugin extensibility",
+      "desc": "Install .eclplugin packages to extend authentication, crash analysis, and UI slots; source confirmation and dependency checks are built in."
     },
     "palette": {
       "icon": "i-lucide-palette",
-      "title": "Classic / Folia appearance",
-      "desc": "Light and dark modes, accent colors, Aurora, image and video backgrounds, and Classic / Folia surfaces. Export theme bundles with the visual theme designer."
+      "title": "Four built-in themes",
+      "desc": "Classic, Folia, Absolutely, and four Catppuccin flavors — with light/dark mode, accent colors, image or video backgrounds, transparency, blur, fonts, and corner radius."
     },
     "crash": {
       "icon": "i-lucide-bug",
       "title": "Crash analysis",
-      "desc": "Collect exit information and crash logs, then analyze likely causes using rules and mod information to help diagnose problems."
+      "desc": "Collects game exit information and crash logs, then analyzes likely causes with rule and mod data to help you find the problem."
     },
     "tools": {
       "icon": "i-lucide-wrench",
-      "title": "Practical tools",
-      "desc": "Custom file downloads, Minecraft skin PNG avatar cropping and export, and NAT type detection, together in the More tools page."
+      "title": "Toolbox",
+      "desc": "Custom file downloads plus Minecraft skin avatar cropping and PNG export — all in one place."
     },
     "updates": {
       "icon": "i-lucide-refresh-cw",
-      "title": "Version checks & updates",
-      "desc": "Check launcher updates in Settings → About. Packaged versions with built-in update support can download an update and restart after confirmation."
+      "title": "Update checks",
+      "desc": "Check for launcher updates from Settings → About. Packaged builds with built-in updates can download and, after confirmation, restart the app."
     },
     "i18n": {
       "icon": "i-lucide-languages",
-      "title": "Multilingual interface",
-      "desc": "Switch interface languages and manage accounts, games, multiplayer and settings in a language you know."
+      "title": "Six interface languages",
+      "desc": "Simplified Chinese, Traditional Chinese, English, Japanese, German, and Russian — manage accounts, games, and settings in the language you know best."
     }
   },
   "seo": {
     "title": "EuoraCraft Launcher · A thoughtful start to Minecraft",
-    "description": "EuoraCraft Launcher is an open-source Minecraft launcher with instance and Java management, mod and resource search, multiplayer, plugins, crash analysis and personal themes."
+    "description": "EuoraCraft Launcher is an open-source Minecraft launcher with instance and Java management, mod and resource search, plugins, crash analysis and personal themes."
   },
   "a11y": {
     "skip": "Skip to content",

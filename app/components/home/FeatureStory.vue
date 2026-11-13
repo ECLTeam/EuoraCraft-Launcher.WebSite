@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ story: string, reverse?: boolean }>()
+defineProps<{ story: string, number?: number, reverse?: boolean }>()
 const { t } = useI18n()
 </script>
 
@@ -9,7 +9,7 @@ const { t } = useI18n()
     :class="{ 'feature-story--reverse': reverse }"
   >
     <div class="story-copy">
-      <span class="eyebrow">{{ t(`home.stories.${story}.label`) }}</span>
+      <span class="eyebrow"><span class="story-num">{{ String(number ?? 1).padStart(2, '0') }}</span>{{ t(`home.stories.${story}.label`) }}</span>
       <h2 class="section-title">
         {{ t(`home.stories.${story}.title`) }}
       </h2>
@@ -33,26 +33,39 @@ const { t } = useI18n()
 <style scoped>
 .feature-story {
   display: grid;
-  grid-template-columns: 0.85fr 1.2fr;
+  grid-template-columns: 0.8fr 1.2fr;
   align-items: center;
-  gap: 48px;
-  margin-block: auto;
-  flex-shrink: 0;
+  gap: clamp(32px, 5vw, 72px);
 }
 .feature-story--reverse {
-  grid-template-columns: 1.2fr 0.85fr;
+  grid-template-columns: 1.2fr 0.8fr;
 }
 .feature-story--reverse .story-copy {
   order: 2;
 }
 .story-copy {
-  max-width: 410px;
+  max-width: 420px;
+}
+.story-num {
+  margin-right: 10px;
+  color: var(--ecl-text-tertiary);
+  font-weight: 400;
+}
+.story-copy .eyebrow {
+  display: flex;
+  align-items: center;
 }
 .story-copy .section-title {
-  font-size: clamp(25px, 2.5vw, 34px);
+  font-size: clamp(24px, 2.6vw, 34px);
+}
+.story-copy .section-description {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.8;
 }
 .story-visual {
   min-width: 0;
+  margin: 0;
 }
 figcaption {
   margin-top: 12px;

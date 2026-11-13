@@ -7,50 +7,62 @@ const { t } = useI18n()
 <template>
   <section
     id="home-opensource"
-    class="site-container open-source"
+    class="open-source"
     :aria-label="t('home.opensource.title')"
   >
-    <div>
-      <span class="eyebrow">{{ t("home.opensource.eyebrow") }}</span>
-      <h2 class="section-title">
-        {{ t("home.opensource.title") }}
-      </h2>
-      <p class="section-description">
-        {{ t("home.opensource.desc") }}
-      </p>
-      <div class="section-actions">
-        <UButton
-          :to="LINKS.repo"
-          target="_blank"
-          icon="i-simple-icons-github"
-          color="neutral"
-          variant="outline"
-          :label="t('home.opensource.github')"
-        /><UButton
-          :to="LINKS.issues"
-          target="_blank"
-          icon="i-lucide-message-square"
-          color="neutral"
-          variant="ghost"
-          :label="t('home.opensource.issues')"
-        /><UButton
-          to="/docs"
-          icon="i-lucide-book-open"
-          color="neutral"
-          variant="ghost"
-          :label="t('home.opensource.docs')"
-        />
-      </div>
-    </div>
-    <div class="community-values">
+    <div class="site-container open-source-grid">
       <div
-        v-for="(key, index) in ['license', 'plugins', 'community']"
-        :key="key"
+        v-reveal
+        class="open-source-copy"
       >
-        <UIcon
-          :name="['i-lucide-code', 'i-lucide-puzzle', 'i-lucide-users'][index]!"
-          class="size-5"
-        /><span>{{ t(`home.opensource.${key}`) }}</span>
+        <span class="eyebrow">{{ t("home.opensource.eyebrow") }}</span>
+        <h2 class="section-title">
+          {{ t("home.opensource.title") }}
+        </h2>
+        <p class="section-description">
+          {{ t("home.opensource.desc") }}
+        </p>
+        <div class="section-actions">
+          <UButton
+            :to="LINKS.repo"
+            target="_blank"
+            icon="i-simple-icons-github"
+            color="neutral"
+            variant="outline"
+            :label="t('home.opensource.github')"
+          /><UButton
+            :to="LINKS.issues"
+            target="_blank"
+            icon="i-lucide-message-square"
+            color="neutral"
+            variant="ghost"
+            :label="t('home.opensource.issues')"
+          /><UButton
+            to="/docs"
+            icon="i-lucide-book-open"
+            color="neutral"
+            variant="ghost"
+            :label="t('home.opensource.docs')"
+          />
+        </div>
+      </div>
+      <div
+        v-reveal="{ delay: 80 }"
+        class="community-values"
+      >
+        <div
+          v-for="(key, index) in ['license', 'plugins', 'community']"
+          :key="key"
+          class="community-item"
+        >
+          <span class="community-icon">
+            <UIcon
+              :name="['i-lucide-code', 'i-lucide-puzzle', 'i-lucide-users'][index]!"
+              class="size-4"
+            />
+          </span>
+          <span>{{ t(`home.opensource.${key}`) }}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -58,49 +70,60 @@ const { t } = useI18n()
 
 <style scoped>
 .open-source {
-  padding-block: 64px 48px;
+  padding-block: clamp(56px, 7vw, 96px);
+  border-top: 1px solid var(--ecl-divider);
+}
+.open-source-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.6fr;
+  grid-template-columns: 1.1fr 0.6fr;
   align-items: center;
-  gap: 56px;
+  gap: clamp(32px, 5vw, 64px);
 }
 .open-source .section-title {
-  font-size: clamp(24px, 2.1vw, 30px);
-  font-weight: 600;
+  font-size: clamp(22px, 2.2vw, 30px);
 }
 .open-source .section-description {
-  margin-top: 12px;
-  max-width: 640px;
-  font-size: 14px;
-  line-height: 1.85;
-  text-wrap: balance;
+  margin-top: 14px;
+  max-width: 560px;
+  font-size: 15px;
+  line-height: 1.8;
 }
 .open-source .section-actions {
   margin-top: 20px;
 }
 .community-values {
   display: grid;
-  gap: 20px;
-  padding-left: 32px;
-  border-left: 1px solid var(--ecl-border);
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--ecl-border);
+  border-radius: var(--ecl-radius-card);
+  background: var(--ecl-surface-muted);
+  box-shadow: var(--ecl-shadow-surface);
 }
-.community-values > div {
+.community-item {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  min-height: 40px;
+  padding-inline: 8px;
   font-size: 14px;
 }
-.community-values :deep(.iconify) {
+.community-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
   color: var(--ecl-link);
+  border: 1px solid var(--ecl-border);
+  border-radius: 8px;
+  background: var(--ecl-surface);
 }
 @media (max-width: 1023px) {
-  .open-source {
+  .open-source-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .community-values {
-    padding-left: 0;
-    border: 0;
+    gap: 28px;
   }
 }
 </style>

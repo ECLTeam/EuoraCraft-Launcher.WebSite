@@ -219,7 +219,7 @@ const platforms = [
   justify-content: space-between;
   gap: 24px;
   padding: 32px;
-  border-radius: 12px;
+  border-radius: var(--ecl-radius-card);
 }
 .release-summary { min-width: 0; }
 .release-version { font-size: clamp(22px, 2.2vw, 28px); font-weight: 600; overflow-wrap: anywhere; }
@@ -228,7 +228,7 @@ const platforms = [
 .release-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; }
 .release-status { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 16px; color: var(--ecl-text-secondary); font-size: 13px; }
 .version-select { width: min(100%, 320px); }
-.release-notes-section { margin-top: 32px; padding: 24px; border: 1px solid var(--ecl-border); border-radius: 8px; background: var(--ecl-surface); scroll-margin-top: 96px; }
+.release-notes-section { margin-top: 32px; padding: 24px; border: 1px solid var(--ecl-border); border-radius: var(--ecl-radius-card); background: var(--ecl-surface); scroll-margin-top: 96px; }
 .notes-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
 .notes-empty { line-height: 1.8; }
 @media (max-width: 767px) {

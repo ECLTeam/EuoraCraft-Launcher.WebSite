@@ -9,7 +9,8 @@ withDefaults(
     eager?: boolean
   }>(),
   {
-    src: '/marketing/launcher-overview.png',
+    src: '/marketing/launcher-overview.webp',
+    darkSrc: '/marketing/launcher-overview-dark.webp',
     width: 1280,
     height: 800,
     eager: false
@@ -54,7 +55,7 @@ withDefaults(
   overflow: hidden;
   width: 100%;
   border: 1px solid var(--ecl-border-strong);
-  border-radius: 12px;
+  border-radius: var(--ecl-radius-window);
   background: var(--ecl-surface);
   box-shadow: var(--ecl-shadow-pop);
 }

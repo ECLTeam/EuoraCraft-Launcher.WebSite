@@ -1,4 +1,4 @@
-EuoraCraft Launcher（**ECL**）是一款面向 Minecraft 的**开源、可扩展**第三方启动器。它围绕账户、实例、资源和联机组织游戏体验，也允许通过插件扩展功能。
+EuoraCraft Launcher（**ECL**）是一款面向 Minecraft 的**开源、可扩展**第三方启动器。它围绕账户、实例和资源组织游戏体验，也允许通过插件扩展功能。
 
 当前开发版提供：
 
@@ -6,9 +6,8 @@ EuoraCraft Launcher（**ECL**）是一款面向 Minecraft 的**开源、可扩�
 - Modrinth / CurseForge 资源搜索，模组、资源包、光影、数据包与整合包管理
 - 本地 Java 扫描与 Temurin 下载、安装和选择
 - 微软、离线与外置认证账户，以及皮肤衣柜
-- EasyTier 联机房间、节点状态与联机协议扩展
-- 游戏日志与崩溃分析，自定义下载、皮肤头像导出和 NAT 检测工具
-- Classic / Folia 风格、亮暗主题、Aurora、图片与视频背景，以及主题设计器
+- 游戏日志与崩溃分析，自定义下载、皮肤头像导出与原理图 3D 预览
+- Classic、Folia、Absolutely 与 Catppuccin 主题，亮暗模式、图片与视频背景，以及主题设计器
 - 启动器版本检查，以及支持内置更新的安装包更新流程
 
 启动器使用 **Python + PyTauri / Tauri 2**，前端采用 **Vue 3、TypeScript 与 Vite**，结合自有界面组件、Naive UI 与 Tailwind CSS。

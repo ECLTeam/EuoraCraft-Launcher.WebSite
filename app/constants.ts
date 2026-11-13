@@ -27,10 +27,6 @@ export const DOCS: { key: string, href: string, hrefEn?: string }[] = [
     href: 'https://github.com/ECLTeam/EuoraCraft-Launcher/blob/main/docs/theme-designer-guide.zh-CN.md'
   },
   {
-    key: 'pluginConnector',
-    href: 'https://github.com/ECLTeam/EuoraCraft-Launcher/blob/main/docs/plugin-connector-extensions.md'
-  },
-  {
     key: 'instanceCompat',
     href: 'https://github.com/ECLTeam/EuoraCraft-Launcher/blob/main/docs/plugin-instance-compatibility.md'
   },
@@ -60,6 +56,5 @@ export const TECH_STACK = [
   'TypeScript',
   'Vite',
   'Tailwind CSS',
-  'Naive UI',
-  'EasyTier'
+  'Naive UI'
 ]

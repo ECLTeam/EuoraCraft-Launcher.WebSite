@@ -4,7 +4,7 @@ export const featureKeys = [
   'resources',
   'java',
   'users',
-  'lobby',
+  'schematic',
   'plugin',
   'palette',
   'crash',

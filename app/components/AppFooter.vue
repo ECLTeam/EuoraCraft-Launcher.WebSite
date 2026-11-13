@@ -8,7 +8,7 @@ const now = new Date().getFullYear()
 
 <template>
   <footer class="site-footer">
-    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="site-container footer-inner">
       <div class="grid gap-10 md:grid-cols-3">
         <div>
           <div class="flex items-center gap-2.5">
@@ -111,7 +111,7 @@ const now = new Date().getFullYear()
         </div>
       </div>
 
-      <div class="mt-10 border-t border-(--ui-border) pt-6">
+      <div class="footer-legal">
         <p class="text-xs text-muted">
           © {{ now }} {{ BRAND.org }} ·
           {{
@@ -130,9 +130,17 @@ const now = new Date().getFullYear()
 </template>
 
 <style scoped>
+/* 扁平页脚：画布色 + 一条顶部分隔线，不用色带背景 */
 .site-footer {
-  margin-top: 48px;
-  background: var(--ecl-surface-muted);
+  border-top: 1px solid var(--ecl-border);
+}
+.footer-inner {
+  padding-block: 48px 40px;
+}
+.footer-legal {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ecl-divider);
 }
 .site-footer a {
   min-height: 28px;

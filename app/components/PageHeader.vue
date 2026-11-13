@@ -25,25 +25,17 @@ defineProps<{ title: string, description?: string, badge?: string }>()
 
 <style scoped>
 .page-header {
-  position: relative;
-  padding-block: 72px 32px;
-}
-.page-header::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 -10%;
-  width: 70%;
-  z-index: -1;
-  background: radial-gradient(ellipse, var(--aurora-c1), transparent 70%);
-  pointer-events: none;
+  padding-block: clamp(48px, 6vw, 72px) 8px;
 }
 .page-header-copy {
   max-width: 720px;
 }
 h1 {
-  font-size: clamp(30px, 4vw, 44px);
-  line-height: 1.25;
-  font-weight: 650;
-  letter-spacing: -0.035em;
+  margin: 0;
+  font-size: clamp(30px, 3.8vw, 44px);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 </style>
